@@ -1,0 +1,31 @@
+{
+    "id": "compras",
+    "nome": "Compras",
+    "cor": "#2347C8",
+    "cor_bg": "#E2E8FB",
+    "db": {
+        "host": "db.exemplo.local",
+        "port": 3306,
+        "name": "exemplo_compras",
+        "user": "app_user",
+        "pass": "TROQUE_NO_SERVIDOR"
+    },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha_hash",
+    "coluna_ativo": "ativo",
+    "hash": "bcrypt",
+    "coluna_role": "perfil",
+    "valor_admin": "admin",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha",
+    "roles_disponiveis": [
+        "solicitante",
+        "comprador",
+        "gestor",
+        "admin"
+    ],
+    "login_url": "https://portal.exemplo.local/compras/login",
+    "home_url": "https://portal.exemplo.local/compras/dashboard"
+}

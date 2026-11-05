@@ -1,0 +1,30 @@
+{
+    "id": "estoque",
+    "nome": "Estoque",
+    "cor": "#1D7348",
+    "cor_bg": "#DDF3E7",
+    "db": {
+        "host": "db.exemplo.local",
+        "port": 3306,
+        "name": "exemplo_estoque",
+        "user": "app_user",
+        "pass": "TROQUE_NO_SERVIDOR"
+    },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha",
+    "coluna_ativo": null,
+    "hash": "bcrypt",
+    "coluna_role": "cargo",
+    "valor_admin": "admin",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha",
+    "roles_disponiveis": [
+        "admin",
+        "comprador",
+        "filial"
+    ],
+    "login_url": "https://portal.exemplo.local/estoque/login.php",
+    "home_url": "https://portal.exemplo.local/estoque/index.php"
+}

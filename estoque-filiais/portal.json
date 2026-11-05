@@ -1,0 +1,25 @@
+{
+    "id": "estoque",
+    "nome": "Estoque",
+    "cor": "#854F0B",
+    "cor_bg": "#faeeda",
+    "db": {
+        "host": "localhost",
+        "name": "sistema_estoque",
+        "user": "app_user",
+        "pass": "TROQUE_NO_SERVIDOR"
+    },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha",
+    "coluna_ativo": null,
+    "hash": "bcrypt",
+    "coluna_role": "cargo",
+    "valor_admin": "admin",
+    "roles_disponiveis": ["admin", "comprador", "filial"],
+    "login_url": "http://estoque.test/login.php",
+    "home_url": "http://estoque.test/index.php",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha"
+}

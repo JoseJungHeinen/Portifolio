@@ -1,0 +1,18 @@
+Options -Indexes
+RewriteEngine On
+
+# Bloqueia acesso direto a pastas sensíveis. uploads/ é servido só pela rota
+# /anexos (com login) — auditoria de segurança M2.
+RewriteRule ^(src|views|database|storage|logs|vendor|uploads|deploy|cli|docs)(/|$) - [F,L]
+
+# Auditoria de segurança C1/C4: nega dotfiles (.env, .git, .claude...) e
+# arquivos de projeto que não são páginas nem assets.
+RewriteRule (^|/)\. - [F,L]
+RewriteRule \.(md|json|lock|sql|docx|log|disabled|example|ps1|bak)$ - [F,L,NC]
+
+# Permite assets estáticos
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redireciona tudo para index.php
+RewriteRule ^(.*)$ index.php [QSA,L]

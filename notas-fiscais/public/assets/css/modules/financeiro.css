@@ -1,0 +1,149 @@
+/* @versao Fin_05 V_01_16/07/2026 */
+/* =============================================================
+   MÓDULO FINANCEIRO — Tabela de parcelas
+   <table> real · vertical-align: middle
+   ============================================================= */
+
+.fin-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fin-table {
+  width: 100%;
+  min-width: 1180px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 12.5px;
+}
+
+/* ─── Larguras das colunas ───────────────────────────────────── */
+/*  1 chk  2 Proc  3 NF  4 Forn  5 Depto  6 StProc  7 Etapa  8 Tarefa  9 Resp  10 Parc  11 Venc  12 SLA  13 Valor  14 Agend  15 StParc  16 Ação */
+
+.fin-th:nth-child(1),  .fin-td:nth-child(1)  { width: 36px; }
+.fin-th:nth-child(2),  .fin-td:nth-child(2)  { width: 8%; }
+.fin-th:nth-child(3),  .fin-td:nth-child(3)  { width: 4%; }
+.fin-th:nth-child(4),  .fin-td:nth-child(4)  { width: 10%; }
+.fin-th:nth-child(5),  .fin-td:nth-child(5)  { width: 6%; }
+.fin-th:nth-child(6),  .fin-td:nth-child(6)  { width: 6%;  padding-left: 4px; padding-right: 3px; }
+.fin-th:nth-child(7),  .fin-td:nth-child(7)  { width: 4%;  padding-left: 3px; padding-right: 3px; }
+.fin-th:nth-child(8),  .fin-td:nth-child(8)  { width: 8%;  padding-left: 3px; padding-right: 3px; }
+.fin-th:nth-child(9),  .fin-td:nth-child(9)  { width: 8%;  padding-left: 3px; }
+.fin-th:nth-child(10), .fin-td:nth-child(10) { width: 4%; }
+.fin-th:nth-child(11), .fin-td:nth-child(11) { width: 6%; }
+.fin-th:nth-child(12), .fin-td:nth-child(12) { width: 6%; }
+.fin-th:nth-child(13), .fin-td:nth-child(13) { width: 6%; }
+.fin-th:nth-child(14), .fin-td:nth-child(14) { width: 6%; }
+.fin-th:nth-child(15), .fin-td:nth-child(15) { width: 6%; }
+.fin-th:nth-child(16), .fin-td:nth-child(16) { width: 55px; }
+
+/* ─── Cabeçalho ─────────────────────────────────────────────── */
+
+.fin-th {
+  background: #606060;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 10px 8px;
+  white-space: nowrap;
+  text-align: left;
+  vertical-align: middle;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.fin-th--chk {
+  text-align: center;
+}
+
+.fin-th--center {
+  text-align: center;
+}
+
+.fin-th--right {
+  text-align: right;
+}
+
+/* ─── Linhas ────────────────────────────────────────────────── */
+
+.fin-tr {
+  cursor: pointer;
+  transition: background 0.1s;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.fin-tr:hover {
+  background: #FFF5F5;
+}
+
+.fin-tr--vencido {
+  background: #FFF8F8;
+  border-left: 3px solid #FCA5A5;
+}
+
+.fin-tr--agvenc {
+  background: #FFFAF4;
+  border-left: 3px solid #FCD34D;
+}
+
+.fin-tr--pago {
+  opacity: 0.75;
+}
+.fin-tr--pago:hover { background: transparent; }
+
+.fin-tr--cancelado {
+  opacity: 0.55;
+}
+.fin-tr--cancelado:hover { background: transparent; }
+
+/* ─── Células ────────────────────────────────────────────────── */
+
+.fin-td {
+  padding: 10px 8px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.fin-td--chk {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* ─── Agendamento: link hover ────────────────────────────────── */
+
+.fin-tr .ag-action { opacity: 0; transition: opacity 0.14s; }
+.fin-tr:hover .ag-action { opacity: 1; }
+
+/* ─── Botões de ação na última coluna ────────────────────────── */
+
+.fin-action-btn {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  white-space: nowrap;
+  transition: background 0.15s, opacity 0.15s;
+}
+
+.fin-action-btn--agendar {
+  background: #2347C8;
+  color: #fff;
+}
+.fin-action-btn--agendar:hover {
+  background: #1B38A0;
+}
+
+.fin-action-btn--pagar {
+  background: #00A960;
+  color: #fff;
+}
+.fin-action-btn--pagar:hover {
+  background: #008A4E;
+}

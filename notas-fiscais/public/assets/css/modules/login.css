@@ -1,0 +1,125 @@
+/* @versao Log_05 V_03_10/08/2026 */
+/* ============================================================
+   login.css — Tela de login nativa
+   Design System Exemplo · Primário #2347C8 · Card branco radius 12px
+   ============================================================ */
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-bg);
+  font-family: var(--font-regular);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .10);
+  padding: var(--space-6);
+}
+
+/* Marca empilhada e centralizada: com o símbolo ampliado, o arranjo
+   horizontal desequilibrava o topo do cartão. */
+.login-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.login-logo__symbol {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  display: block;
+  object-fit: contain;
+}
+
+.login-logo__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-logo__brand {
+  font-family: var(--font-bold);
+  font-size: 22px;
+  color: var(--color-dark);
+  line-height: 1.05;
+  letter-spacing: .01em;
+}
+
+.login-logo__vertical {
+  font-family: var(--font-medium);
+  font-size: 12px;
+  color: var(--color-gray-medium);
+  line-height: 1.2;
+}
+
+/* Filete separando a marca do formulário */
+.login-rule {
+  height: 1px;
+  background: var(--color-gray-light);
+  margin: 0 0 var(--space-5);
+}
+
+.login-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin: 0 0 6px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Quebra fixa do título bicolor: "Sistema Inteligente de" numa linha,
+   "Gestão Orçamentária" na outra — independe da largura do cartão, e o
+   HTML fica sem <br> no meio da frase. */
+.login-title span {
+  display: block;
+}
+
+.login-subtitle {
+  font-size: var(--text-body-sm);
+  color: var(--color-gray-medium);
+  margin: 0 0 var(--space-5);
+  text-align: center;
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: var(--space-2);
+}
+
+.login-footer {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-gray-light);
+  text-align: center;
+  font-size: 11px;
+  color: var(--color-gray-medium);
+  line-height: 1.6;
+}
+
+.login-footer strong {
+  color: var(--color-gray-dark);
+  font-family: var(--font-bold);
+  font-weight: 700;
+}
+
+.login-footer a {
+  color: var(--color-gray-dark);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.login-footer a:hover {
+  color: var(--color-primary);
+}

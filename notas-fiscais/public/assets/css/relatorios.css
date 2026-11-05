@@ -1,0 +1,144 @@
+/* @versao Rel_05 V_01_16/07/2026 */
+/* ================================================================
+   Relatórios — Exemplo NF
+   ================================================================ */
+
+/* ─── Report Panel (colapsável) ─────────────────────────────────── */
+.report-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-gray-light);
+  border-radius: 12px;
+  box-shadow: rgba(0,0,0,.06) 0 2px 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+.report-panel-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .14s;
+}
+.report-panel-header:hover { background: #fafafa; }
+.report-panel-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.report-panel-icon.green  { background: #D8F5E5; color: var(--color-success); }
+.report-panel-icon.amber  { background: #FFF3E0; color: var(--color-warning); }
+.report-panel-icon.red    { background: #FFE8EE; color: var(--color-danger); }
+.report-panel-icon.blue   { background: #E3F0FF; color: #1565C0; }
+.report-panel-icon.purple { background: var(--color-gray-light); color: var(--color-gray-dark); }
+
+.report-panel-titles { flex: 1; }
+.report-panel-title {
+  font-family: var(--font-bold);
+  font-size: 14px;
+  color: var(--color-dark);
+}
+.report-panel-sub {
+  font-size: 12px;
+  color: var(--color-gray-medium);
+  margin-top: 2px;
+}
+.report-panel-actions { display: flex; align-items: center; gap: 8px; }
+.report-chevron { transition: transform .2s; color: var(--color-gray-medium); }
+.report-panel.open .report-chevron { transform: rotate(180deg); }
+
+/* ─── Export dropdown ───────────────────────────────────────────── */
+.export-wrap { position: relative; }
+.export-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 6px 12px;
+  border: 1.5px solid var(--color-gray-light);
+  border-radius: 4px;
+  background: #fff;
+  font-family: var(--font-bold);
+  font-size: 12px;
+  color: var(--color-gray-dark);
+  cursor: pointer;
+  transition: border-color .14s, color .14s;
+}
+.export-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.export-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  min-width: 180px;
+  background: #fff;
+  border: 1.5px solid var(--color-gray-light);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.10);
+  z-index: 200;
+  overflow: hidden;
+}
+.export-wrap.open .export-dropdown { display: block; }
+.export-option {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--color-dark);
+  text-decoration: none;
+  transition: background .12s;
+}
+.export-option:hover { background: #EEF2FD; color: var(--color-primary); }
+
+/* ─── Report body ───────────────────────────────────────────────── */
+.report-body {
+  display: none;
+  border-top: 1px solid #f3f3f3;
+}
+.report-panel.open .report-body { display: block; }
+
+/* ─── KPI strip (4 métricas) ────────────────────────────────────── */
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-bottom: 1px solid #f3f3f3;
+}
+.kpi-strip-item {
+  padding: 16px 20px;
+  border-right: 1px solid #f3f3f3;
+}
+.kpi-strip-item:last-child { border-right: none; }
+.kpi-strip-label {
+  font-family: var(--font-bold);
+  font-size: 10px;
+  color: var(--color-gray-medium);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  margin-bottom: 4px;
+}
+.kpi-strip-val {
+  font-family: var(--font-bold);
+  font-size: 20px;
+  color: var(--color-dark);
+  letter-spacing: -.3px;
+}
+.kpi-strip-val.red    { color: var(--color-primary); }
+.kpi-strip-val.green  { color: var(--color-success); }
+.kpi-strip-val.amber  { color: var(--color-warning); }
+.kpi-strip-val.blue   { color: #1565C0; }
+
+/* ─── Participation bar ─────────────────────────────────────────── */
+.part-bar-wrap { display: flex; align-items: center; gap: 8px; min-width: 80px; }
+.part-bar {
+  flex: 1; height: 5px;
+  background: var(--color-gray-light);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.part-bar-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 99px;
+}
+
+/* ─── Content padding ───────────────────────────────────────────── */
+.rpt-content { padding: 24px 32px 40px; }

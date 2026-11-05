@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Página em manutenção</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+
+        /* esta página supõe que será carregada DENTRO do main-content,
+           por isso só centralizamos o card internamente */
+        .manut-container{
+            width:100%;
+            text-align:center;
+        }
+
+        .manut-card{
+            max-width:520px;
+            width:100%;
+            margin:40px auto 0 auto; /* centraliza horizontalmente */
+            padding:24px 20px 26px;
+            background:#ffffff;
+            border-radius:18px;
+            border:1px solid #e4e4e7;
+            box-shadow:0 18px 40px rgba(15,23,42,0.12);
+            text-align:center;
+        }
+
+        .manut-icon{
+            width:70px;
+            height:70px;
+            margin:0 auto 14px auto;
+            border-radius:18px;
+            background:#2347c8;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#ffffff;
+            font-size:34px;
+            box-shadow:0 12px 25px rgba(239,68,68,0.45);
+        }
+
+        .manut-title{
+            font-size:1.4rem;
+            font-weight:700;
+            color:#5A5A5A;
+            margin-bottom:6px;
+        }
+
+        .manut-text{
+            font-size:.95rem;
+            color:#666;
+            margin-bottom:4px;
+        }
+
+        .manut-hint{
+            font-size:.8rem;
+            color:#9ca3af;
+            margin-top:6px;
+        }
+
+        @media (max-width:768px){
+            .manut-card{
+                margin-top:24px;
+                padding:20px 16px 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="manut-container">
+        <div class="manut-card">
+            <div class="manut-icon">
+                ⚙
+            </div>
+
+            <div class="manut-title">Página em manutenção</div>
+
+            <p class="manut-text">
+                Estamos realizando ajustes e melhorias nesta área do sistema.
+            </p>
+            <p class="manut-text">
+                Por favor, volte mais tarde ou navegue por outro menu.
+            </p>
+            <p class="manut-hint">
+                Se o problema persistir, entre em contato com o setor de TI.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

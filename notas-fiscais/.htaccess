@@ -1,0 +1,34 @@
+# ─────────────────────────────────────────────────────────────────
+# .htaccess raiz — Workflow NF Exemplo
+# Redireciona todo tráfego para public/ e bloqueia acesso direto
+# a diretórios sensíveis (config, src, storage, database).
+# ─────────────────────────────────────────────────────────────────
+
+Options -Indexes
+
+RewriteEngine On
+
+# Redirecionar raiz para public/
+RewriteRule ^$ public/ [L]
+
+# Redirecionar tudo que não começa com public/ para public/
+RewriteRule ^((?!public/).*)$ public/$1 [L,QSA]
+
+# ─── Bloquear acesso direto a diretórios sensíveis ───────────────
+
+# Configurações — nunca acessíveis via web
+RedirectMatch 403 ^/config(/.*)?$
+
+# Código-fonte — nunca acessível via web
+RedirectMatch 403 ^/src(/.*)?$
+
+# Uploads e arquivos privados — acesso apenas via rota autenticada
+RedirectMatch 403 ^/storage(/.*)?$
+
+# Scripts SQL e migrations — nunca acessíveis via web
+RedirectMatch 403 ^/database(/.*)?$
+
+# Ocultar informações do servidor
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"

@@ -1,0 +1,141 @@
+/* @versao Grp_06 V_01_16/07/2026 */
+/**
+ * public/assets/css/modules/groups.css
+ * Estilos específicos do módulo Grupos de Aprovação
+ */
+
+/* ── Avatar de membro ───────────────────────────────────────────── */
+.member-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ── Item de membro na lista ────────────────────────────────────── */
+.member-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.member-item:hover {
+  background: #F6F6F6;
+}
+.member-item + .member-item {
+  border-top: 1px solid #F6F6F6;
+}
+
+/* ── Botão de remover membro ────────────────────────────────────── */
+.member-remove-btn {
+  flex-shrink: 0;
+  line-height: 0;
+}
+.member-remove-btn:hover {
+  color: #B3261E !important;
+}
+
+/* ── Dropdown de busca de membros ───────────────────────────────── */
+.member-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 50;
+  overflow: hidden;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.member-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.1s;
+  border-bottom: 1px solid #F6F6F6;
+}
+.member-dropdown-item:last-child {
+  border-bottom: none;
+}
+.member-dropdown-item:hover {
+  background: #EEF2FD;
+}
+
+/* ── Toggle slider ──────────────────────────────────────────────── */
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #EAEAEA;
+  border-radius: 24px;
+  transition: background 0.2s;
+}
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+input:checked + .toggle-slider {
+  background: #2347C8;
+}
+input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* ── Grid de duas colunas (detail page) ─────────────────────────── */
+.groups-detail-grid {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .groups-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Estado vazio ───────────────────────────────────────────────── */
+.empty-state {
+  padding: 32px 16px;
+  text-align: center;
+  color: #888;
+}
+.empty-state i[data-lucide] {
+  display: block;
+  margin: 0 auto 10px;
+  color: #EAEAEA;
+}
+
+/* ── Scrollbar do dropdown ──────────────────────────────────────── */
+.member-dropdown::-webkit-scrollbar {
+  width: 4px;
+}
+.member-dropdown::-webkit-scrollbar-track {
+  background: #F6F6F6;
+}
+.member-dropdown::-webkit-scrollbar-thumb {
+  background: #DFDFDF;
+  border-radius: 2px;
+}

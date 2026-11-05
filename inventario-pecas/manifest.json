@@ -1,0 +1,15 @@
+{
+  "name": "Inventário Exemplo",
+  "short_name": "Inventário",
+  "start_url": "login.php",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FF0600",
+  "icons": [
+    { "src": "img/icones/icon-192.png",          "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/icones/icon-512.png",          "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/icones/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+    "id": "compras",
+    "nome": "Compras",
+    "cor": "#185FA5",
+    "cor_bg": "#e6f1fb",
+    "db": {
+        "host": "localhost",
+        "port": 3306,
+        "name": "compras",
+        "user": "app_user",
+        "pass": "TROQUE_NO_SERVIDOR"
+    },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha_hash",
+    "coluna_ativo": "ativo",
+    "hash": "bcrypt",
+    "coluna_role": "perfil",
+    "valor_admin": "admin",
+    "roles_disponiveis": ["solicitante", "almoxarife", "comprador", "gestor", "diretor", "admin"],
+    "login_url": "http://compras.test/login",
+    "home_url": "http://compras.test/dashboard",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha"
+}

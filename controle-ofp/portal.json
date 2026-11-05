@@ -1,0 +1,20 @@
+{
+    "id": "ofp",
+    "nome": "OFP",
+    "cor": "#2347C8",
+    "cor_bg": "#ffe6e6",
+    "db": { "host": "localhost", "port": 3306, "name": "ofp", "user": "app_user", "pass": "TROQUE_NO_SERVIDOR" },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha_hash",
+    "coluna_ativo": "ativo",
+    "hash": "bcrypt",
+    "coluna_role": "perfil",
+    "valor_admin": "admin",
+    "roles_disponiveis": ["estoque", "comprador", "gerente", "financeiro", "diretor", "admin"],
+    "login_url": "http://localhost:8091/login",
+    "home_url": "http://localhost:8091/",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha"
+}

@@ -1,0 +1,29 @@
+{
+    "id": "inventario",
+    "nome": "Inventário",
+    "cor": "#0B7285",
+    "cor_bg": "#E3F5F8",
+    "db": {
+        "ponte": {
+            "url": "https://app.exemplo.local/inventario/portal_ponte.php",
+            "token": "TROQUE_POR_TOKEN_GERADO"
+        }
+    },
+    "tabela": "inv_usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha_hash",
+    "coluna_ativo": "ativo",
+    "hash": "bcrypt",
+    "coluna_role": "perfil",
+    "valor_admin": "admin",
+    "campo_post_email": "usuario",
+    "campo_post_senha": "senha",
+    "roles_disponiveis": [
+        "admin",
+        "gestor"
+    ],
+    "login_url": "https://app.exemplo.local/inventario/index.php",
+    "home_url": "https://app.exemplo.local/inventario/dashboard.php",
+    "coluna_identificador_login": "usuario"
+}

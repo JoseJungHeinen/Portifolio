@@ -1,0 +1,9 @@
+# segredos e dados locais
+.env
+.env.*
+!.env.example
+*.log
+/vendor/
+/node_modules/
+/storage/
+/uploads/

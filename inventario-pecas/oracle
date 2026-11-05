@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Oracle → MySQL (estoque_revenda)</title>
+</head>
+<body>
+<?php
+require __DIR__ . '/conexao_oracle.php';
+
+// ===== CONFIGURAÇÃO MYSQL (DESTINO) =====
+$mysql_host = 'localhost';
+$mysql_db   = 'inventario';
+$mysql_user = 'app_user';
+$mysql_pass = 'TROQUE_NO_SERVIDOR';
+
+// -------- Funções de conexão --------
+function conectar_mysql($host, $db, $user, $pass) {
+    $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
+    try {
+        $pdo = new PDO($dsn, $user, $pass, [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]);
+        return $pdo;
+    } catch (PDOException $e) {
+        die('<p>Erro ao conectar no MySQL: ' . htmlspecialchars($e->getMessage()) . '</p>');
+    }
+}
+
+if (isset($_POST['transferir'])) {
+
+    // 1) Conecta Oracle
+    $ora_conn = oracle_conectar();
+    if (!$ora_conn) {
+        die('<p>Erro ao conectar no Oracle (Apollo). Tente de novo.</p>');
+    }
+
+    // 2) Query Oracle
+    $query = "
+        SELECT 
+            e.empresa, 
+            r.revenda, 
+            e.item_estoque, 
+            e.item_estoque_pub, 
+            e.des_item_estoque, 
+            (r.qtd_contabil - r.qtd_alocada) AS quantidade, 
+            r.locacao_zona, 
+            r.locacao_rua, 
+            r.locacao_estante, 
+            r.locacao_prateleira, 
+            r.locacao_numero,
+            (r.locacao_zona || '-' || r.locacao_rua || '-' || r.locacao_estante || '-' || r.locacao_prateleira || '-' || r.locacao_numero) AS locacao_geral,
+            r.class_abc,
+            r.cus_ult_entrada, 
+            e.preco_alternativo
+        FROM 
+            pec_item_estoque e
+        INNER JOIN 
+            pec_item_revenda r 
+                ON e.empresa = r.empresa 
+               AND e.item_estoque = r.item_estoque
+        WHERE 
+            (r.qtd_contabil - r.qtd_alocada) > 0 
+            AND e.empresa = 1 
+            AND r.revenda = 5
+    ";
+
+    $stid = oci_parse($ora_conn, $query);
+    oci_execute($stid);
+
+    // 3) Conecta MySQL
+    $sql_pdo = conectar_mysql($mysql_host, $mysql_db, $mysql_user, $mysql_pass);
+
+    // 4) Prepara INSERT em estoque_revenda
+    // Ajuste os tipos/tamanho e a chave única conforme seu schema (empresa+revenda+item_estoque, por exemplo)
+    $insertSql = "
+        INSERT INTO estoque_revenda (
+            empresa, 
+            revenda, 
+            item_estoque, 
+            item_estoque_pub, 
+            des_item_estoque, 
+            quantidade, 
+            locacao_zona, 
+            locacao_rua, 
+            locacao_estante, 
+            locacao_prateleira, 
+            locacao_numero, 
+            locacao_geral, 
+            class_abc, 
+            cus_ult_entrada, 
+            preco_alternativo
+        ) VALUES (
+            :empresa,
+            :revenda,
+            :item_estoque,
+            :item_estoque_pub,
+            :des_item_estoque,
+            :quantidade,
+            :locacao_zona,
+            :locacao_rua,
+            :locacao_estante,
+            :locacao_prateleira,
+            :locacao_numero,
+            :locacao_geral,
+            :class_abc,
+            :cus_ult_entrada,
+            :preco_alternativo
+        )
+        ON DUPLICATE KEY UPDATE
+            quantidade       = VALUES(quantidade),
+            locacao_zona     = VALUES(locacao_zona),
+            locacao_rua      = VALUES(locacao_rua),
+            locacao_estante  = VALUES(locacao_estante),
+            locacao_prateleira = VALUES(locacao_prateleira),
+            locacao_numero   = VALUES(locacao_numero),
+            locacao_geral    = VALUES(locacao_geral),
+            class_abc        = VALUES(class_abc),
+            cus_ult_entrada  = VALUES(cus_ult_entrada),
+            preco_alternativo= VALUES(preco_alternativo)
+    ";
+    $stmtInsert = $sql_pdo->prepare($insertSql);
+
+    $linhas = 0;
+    while ($row = oci_fetch_assoc($stid)) {
+        $params = [
+            ':empresa'          => $row['EMPRESA'],
+            ':revenda'          => $row['REVENDA'],
+            ':item_estoque'     => $row['ITEM_ESTOQUE'],
+            ':item_estoque_pub' => $row['ITEM_ESTOQUE_PUB'],
+            ':des_item_estoque' => $row['DES_ITEM_ESTOQUE'],
+            ':quantidade'       => $row['QUANTIDADE'],
+            ':locacao_zona'     => $row['LOCACAO_ZONA'],
+            ':locacao_rua'      => $row['LOCACAO_RUA'],
+            ':locacao_estante'  => $row['LOCACAO_ESTANTE'],
+            ':locacao_prateleira'=> $row['LOCACAO_PRATELEIRA'],
+            ':locacao_numero'   => $row['LOCACAO_NUMERO'],
+            ':locacao_geral'    => $row['LOCACAO_GERAL'],
+            ':class_abc'        => $row['CLASS_ABC'],
+            ':cus_ult_entrada'  => $row['CUS_ULT_ENTRADA'],
+            ':preco_alternativo'=> $row['PRECO_ALTERNATIVO'],
+        ];
+
+        $stmtInsert->execute($params);
+        $linhas++;
+    }
+
+    oci_free_statement($stid);
+    oci_close($ora_conn);
+
+    echo "<p>✅ Transferidos {$linhas} registros para estoque_revenda!</p>";
+}
+?>
+
+<form method="POST">
+    <button type="submit" name="transferir">Executar Transferência Oracle → MySQL</button>
+</form>
+</body>
+</html>

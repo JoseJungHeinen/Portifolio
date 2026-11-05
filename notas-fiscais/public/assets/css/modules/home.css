@@ -1,0 +1,134 @@
+/* @versao Ini_03 V_01_18/07/2026 */
+/* ============================================================
+   home.css — Tela inicial de boas-vindas (Notas)
+   Standalone · tema escuro · gradiente azul→verde
+   ============================================================ */
+
+.welcome-page {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  box-sizing: border-box;
+  color: #E6EBF2;
+  font-family: var(--font-regular, 'Segoe UI', Arial, sans-serif);
+  background:
+    radial-gradient(900px 500px at 78% 30%, rgba(45, 120, 220, 0.20), transparent 60%),
+    radial-gradient(700px 500px at 85% 75%, rgba(40, 200, 150, 0.16), transparent 60%),
+    #080B12;
+  overflow: hidden;
+}
+
+.welcome-wrap {
+  width: 100%;
+  max-width: 1180px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 40px;
+}
+
+/* ── Coluna de texto ─────────────────────────────────────── */
+.welcome-brand {
+  margin: 0;
+  font-family: var(--font-bold, 'Segoe UI', Arial, sans-serif);
+  font-weight: 800;
+  font-size: clamp(56px, 9vw, 116px);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  background: linear-gradient(95deg, #4C9BFF 0%, #35C4E8 45%, #3DDC97 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.welcome-tagline {
+  margin: 10px 0 0;
+  font-size: clamp(15px, 1.6vw, 22px);
+  font-weight: 500;
+  color: #8B97AB;
+  letter-spacing: 0.3px;
+}
+
+.welcome-text {
+  margin: 32px 0 0;
+  max-width: 540px;
+  font-size: clamp(17px, 1.7vw, 24px);
+  line-height: 1.65;
+  color: #C7D0DD;
+  font-weight: 300;
+}
+
+.welcome-greeting {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.welcome-actions {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.welcome-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 34px;
+  border-radius: 10px;
+  font-family: var(--font-bold, 'Segoe UI', Arial, sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #06121A;
+  background: linear-gradient(95deg, #4C9BFF 0%, #3DDC97 100%);
+  box-shadow: 0 10px 30px rgba(50, 160, 210, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.welcome-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 38px rgba(50, 160, 210, 0.45);
+}
+
+.welcome-btn svg { width: 20px; height: 20px; }
+
+/* ── Coluna da ilustração ────────────────────────────────── */
+.welcome-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-illustration svg {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  filter: drop-shadow(0 24px 60px rgba(30, 110, 200, 0.25));
+}
+
+/* ── Selo/sparkle canto inferior direito ─────────────────── */
+.welcome-sparkle {
+  position: fixed;
+  right: 28px;
+  bottom: 24px;
+  color: #6B7688;
+  opacity: 0.85;
+}
+.welcome-sparkle svg { width: 30px; height: 30px; }
+
+/* ── Responsivo ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .welcome-wrap {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: left;
+  }
+  .welcome-illustration { order: -1; margin-bottom: 8px; }
+  .welcome-illustration svg { max-width: 360px; }
+}

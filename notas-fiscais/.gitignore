@@ -1,0 +1,55 @@
+# Artefatos de ferramentas de desenvolvimento
+.playwright-mcp/
+.claude/
+.deploy/
+.deploy_app/
+
+# Dependências e cache
+vendor/
+node_modules/
+.cache/
+
+# Configurações locais e segredos
+.env
+.env.local
+config/local.php
+config/database.php
+
+# Atalhos de desenvolvimento — NUNCA commitar/deployar
+dev-login.php
+public/dev-login.php
+forge_login.php
+public/forge_login.php
+backup-sistema-maior.sql
+backup-sistema-maior-mysql8.sql
+
+# Dumps/backups de banco — dados reais de clientes/fiscais, nunca versionar
+*.sql
+!database/schema.sql
+!database/migrations/*.sql
+!database/seeds/*.sql
+database/seeds/003_notas_capturadas_brobot.sql
+database/backups/
+
+# Arquivos pessoais de trabalho soltos na raiz — não são parte do código
+/*.pdf
+/*.xlsx
+/*.zip
+/*.png
+_tmp_migrate.php
+teste-placa.php
+
+# Scratch de ferramentas de IA
+.superpowers/
+
+# Logs
+*.log
+logs/
+
+# Dados de execução — XML/PDF das notas, anexos, locks. Nunca versionar:
+# são documentos fiscais reais, e o servidor tem o storage dele.
+storage/
+ACESSO-LOCAL.txt
+
+# Chaves e senhas de servidor — nunca versionar
+/server/

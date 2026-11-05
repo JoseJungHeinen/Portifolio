@@ -1,0 +1,26 @@
+{
+    "id": "veiculos",
+    "nome": "Veículos",
+    "cor": "#2347C8",
+    "cor_bg": "#eef2fd",
+    "db": {
+        "host": "localhost",
+        "name": "Veiculos",
+        "user": "app_user",
+        "pass": "TROQUE_NO_SERVIDOR"
+    },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha_hash",
+    "coluna_ativo": "is_ativo",
+    "hash": "bcrypt",
+    "coluna_role": null,
+    "valor_admin": null,
+    "roles_disponiveis": [],
+    "login_url": "http://Veiculos.test/index.php",
+    "home_url": "http://Veiculos.test/index.php",
+    "campo_post_email": "cpf",
+    "campo_post_senha": "senha",
+    "coluna_identificador_login": "cpf"
+}

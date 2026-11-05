@@ -1,0 +1,14 @@
+Options -Indexes
+RewriteEngine On
+
+# Auditoria de segurança: este .htaccess substitui as regras da raiz dentro de
+# public/, então repete o bloqueio de dotfiles e arquivos que não são assets.
+RewriteRule (^|/)\. - [F,L]
+RewriteRule \.(md|json|lock|sql|docx|log|disabled|example|ps1|bak|php)$ - [F,L,NC]
+
+# Serve arquivos estáticos diretamente
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Bloqueia acesso direto às pastas sensíveis fora de public
+RewriteRule ^(src|views|database|storage|logs|vendor)(/|$) - [F,L]

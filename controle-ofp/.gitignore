@@ -1,0 +1,8 @@
+.env
+ACESSO-*.txt
+storage/logs/*
+storage/anexos/*
+storage/import/*
+!storage/**/.gitkeep
+*.log
+.playwright-mcp/

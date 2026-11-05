@@ -1,0 +1,29 @@
+Options -Indexes
+RewriteEngine On
+
+RewriteRule ^(src|views|database|storage|tests|cli|docs)(/|$) - [F,L]
+RewriteRule (^|/)\. - [F,L]
+
+# Arquivos soltos na raiz (portal.json, CLAUDE.md, router.php...) nunca são servidos
+RewriteCond $0 !^index\.php$
+RewriteRule ^[^/]+\.(php|json|md|txt|py|sql|lock|log)$ - [F,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Bloqueia arquivos que não devem ser servidos pela web (SQL, docs, logs, configs, dotfiles).
+Options -Indexes
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule (^|/)\. - [F,L]
+</IfModule>
+<FilesMatch "\.(sql|md|log|example|ps1|bak|lock|dist|ini|sh|bat)$|^(portal|composer|package)\.json$|^TODO">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

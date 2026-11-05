@@ -1,0 +1,13 @@
+node_modules/
+assets/css/tailwind.css
+package-lock.json
+
+# segredos e dados locais
+.env
+.env.*
+!.env.example
+*.log
+/vendor/
+/node_modules/
+/storage/
+/uploads/

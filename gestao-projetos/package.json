@@ -1,0 +1,16 @@
+{
+  "name": "exemplo-devsystems",
+  "version": "1.0.0",
+  "description": "Exemplo DevSystems — Gestão de Projetos Web",
+  "scripts": {
+    "build": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/app.css --minify",
+    "watch": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/app.css --watch",
+    "dev": "tailwindcss -i ./assets/css/tailwind.css -o ./assets/css/app.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17"
+  }
+}

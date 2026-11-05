@@ -1,0 +1,704 @@
+/* @versao Tpl_07 V_04_20/08/2026 */
+/* ═══════════════════════════════════════════════════════════════════
+   templates.css — Módulo Templates de Fluxo NF
+   Design System Exemplo: Segoe UI, #2347C8, #606060, #F6F6F6
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Abas do editor ───────────────────────────── */
+.template-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.template-tabs {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border-bottom: 2px solid #EAEAEA;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.template-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  font-family: var(--font-bold);
+  font-size: var(--text-body-sm);
+  color: var(--color-gray-medium);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -2px; /* sobrepõe a borda do container */
+}
+
+.template-tab:hover {
+  color: var(--color-dark);
+}
+
+.template-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* ── Painéis de aba ────────────────────────────── */
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* ── Linha de etapa ───────────────────────────── */
+.etapa-row {
+  display: grid;
+  grid-template-columns: 28px 28px 3fr 120px 2fr 60px 90px;
+  align-items: center;
+  gap: 8px;
+  background: #F8F8F8;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border: 1px solid #EAEAEA;
+  transition: border-color 0.15s;
+}
+
+.etapa-row:hover {
+  border-color: #DFDFDF;
+}
+
+/* Etapa de arquivamento: ocupa as colunas de tipo/aprovador/SLA */
+.etapa-auto-info {
+  grid-column: span 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-bold);
+  font-size: 12px;
+  color: #00A960;
+  background: #D8F5E5;
+  border-radius: 4px;
+  padding: 8px 12px;
+  min-width: 0;
+}
+
+.etapa-auto-info .etapa-chip-restrita {
+  background: #FFE8EE;
+  color: #B3261E;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* ── Etapa de decisão: mapa índice → etapa de destino ──────────────────
+   Ocupa as mesmas colunas do aprovador+SLA, que a decisão não usa (quem a
+   resolve é o sistema, lendo um campo do formulário). */
+.etapa-decisao-box {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  background: #EEF2FD;
+  border: 1px solid #FFD6D6;
+  border-radius: 4px;
+  padding: 8px 10px;
+}
+
+.etapa-decisao-titulo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-bold);
+  font-size: 11px;
+  color: #2347C8;
+}
+
+.etapa-decisao-linha {
+  display: grid;
+  grid-template-columns: 78px 12px minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.etapa-decisao-indice {
+  font-family: var(--font-bold);
+  font-size: 12px;
+  color: var(--color-dark);
+  white-space: nowrap;
+}
+
+.etapa-decisao-seta {
+  font-size: 13px;
+  color: #888888;
+  text-align: center;
+}
+
+.etapa-decisao-rotulo {
+  font-family: var(--font-regular);
+  font-size: 11px;
+  color: #606060;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.etapa-decisao-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-family: var(--font-regular);
+  font-size: 11px;
+  line-height: 1.4;
+  color: #B3261E;
+}
+
+/* Responsável "Solicitante": ocupa a coluna do seletor de grupo/usuário, que
+   não existe aqui — o dono só é conhecido quando o processo é aberto. */
+.etapa-aprovador-fixo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-bold);
+  font-size: 11px;
+  color: #2347C8;
+  background: #EEF2FD;
+  border: 1px dashed #FFC2C2;
+  border-radius: 4px;
+  padding: 0 8px;
+  min-height: 40px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* SLA herdado do catálogo: ocupa as colunas valor+unidade */
+.etapa-sla-fixo {
+  grid-column: span 2;
+  font-family: var(--font-bold);
+  font-size: 11px;
+  color: #FF8A2D;
+  background: #FFF3E0;
+  border-radius: 4px;
+  padding: 8px 6px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.etapa-drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  color: #C0C0C0;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.etapa-drag-handle:hover {
+  color: #888;
+  background: #EAEAEA;
+}
+
+.etapa-drag-handle:active {
+  cursor: grabbing;
+}
+
+.etapa-numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2347C8;
+  color: #fff;
+  font-family: var(--font-bold);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* ── Linha de campo ───────────────────────────── */
+.campo-row {
+  display: grid;
+  /* handle · nome · tipo · exigido em · obrigatório · remover */
+  grid-template-columns: 28px 1fr 160px 170px auto auto;
+  align-items: center;
+  gap: 10px;
+  background: #F8F8F8;
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid #EAEAEA;
+}
+
+.campo-row:hover {
+  border-color: #DFDFDF;
+}
+
+/* ── Linha de anexo ───────────────────────────── */
+.anexo-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 170px 200px auto auto;
+  align-items: center;
+  gap: 10px;
+  background: #F8F8F8;
+  border-radius: 6px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border: 1px solid #EAEAEA;
+}
+
+/* ── Checkbox obrigatório nos anexos ─────────── */
+.anexo-obrigatorio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #606060;
+  font-family: var(--font-regular);
+}
+
+.anexo-obrigatorio-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #2347C8;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ── Campos padrão do sistema (read-only) ──── */
+.std-fields-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-gray-medium);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.std-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.std-field-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #F8F8F8;
+  border: 1px solid #EAEAEA;
+  border-radius: 6px;
+}
+
+.std-field-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-dark);
+  flex: 1;
+}
+
+.std-field-type {
+  font-size: 10px;
+  color: var(--color-gray-medium);
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+
+.cfields-divider {
+  border: none;
+  border-top: 1.5px dashed #EAEAEA;
+  margin: 16px 0 14px;
+}
+
+@media (max-width: 600px) {
+  .std-fields-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Seletor de versão segmentado ───────────── */
+.version-segmented {
+  display: inline-flex;
+  border: 1.5px solid #DFDFDF;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.version-seg-opt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: var(--font-regular);
+  font-size: 12px;
+  font-weight: 500;
+  color: #606060;
+  background: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  border-right: 1px solid #DFDFDF;
+}
+
+.version-seg-opt:last-child {
+  border-right: none;
+}
+
+.version-seg-opt:hover:not(.active) {
+  background: #FFF5F5;
+}
+
+.version-seg-opt.active {
+  background: #EEF2FD;
+  color: #2347C8;
+  font-weight: 700;
+}
+
+/* ── Chips de usuários UAT ──────────────────── */
+.uat-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: #FFF3E0;
+  border: 1px solid #FF8A2D;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #FF8A2D;
+}
+
+.uat-chip button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  color: #FF8A2D;
+  padding: 0 0 0 2px;
+}
+
+.uat-chip button:hover {
+  color: #D97706;
+}
+
+/* ── Botão remover item ─────────────────────── */
+.btn-remove-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  background: none;
+  border: 1px solid #EAEAEA;
+  color: #B3261E;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-remove-item:hover {
+  background: #FFE8EE;
+  border-color: #B3261E;
+}
+
+/* ── Toggle slider (reutilizado de groups.css) ── */
+.toggle-slider {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  background: #DFDFDF;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+input[type="checkbox"]:checked + .toggle-slider {
+  background: #2347C8;
+}
+
+input[type="checkbox"]:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* ── Toggle obrigatório inline nos campos ─────── */
+.campo-obrig-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.campo-obrig-toggle input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.campo-obrig-toggle .toggle-slider {
+  width: 36px;
+  height: 20px;
+}
+
+.campo-obrig-toggle .toggle-slider::before {
+  width: 14px;
+  height: 14px;
+}
+
+.campo-obrig-toggle input[type="checkbox"]:checked + .toggle-slider::before {
+  transform: translateX(16px);
+}
+
+.campo-obrig-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  transition: color 0.15s;
+}
+
+.campo-obrig-toggle input[type="checkbox"]:checked ~ .campo-obrig-label {
+  color: #2347C8;
+}
+
+/* ── Drag-over visual ─────────────────────────── */
+.drag-over {
+  border: 2px dashed #2347C8 !important;
+  background: #EEF2FD !important;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+/* ── Inline input dentro de linhas ────────────── */
+.etapa-row input,
+.etapa-row select,
+.campo-row input:not([type="checkbox"]),
+.campo-row select,
+.anexo-row input:not([type="checkbox"]),
+.anexo-row select {
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #DFDFDF;
+  border-radius: 4px;
+  font-family: var(--font-regular);
+  font-size: 13px;
+  color: var(--color-dark);
+  background: #fff;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+  text-align: left;
+}
+
+.etapa-row input:focus,
+.etapa-row select:focus,
+.campo-row input:not([type="checkbox"]):focus,
+.campo-row select:focus,
+.anexo-row input:not([type="checkbox"]):focus,
+.anexo-row select:focus {
+  border-color: #2347C8;
+}
+
+/* ── Custom dropdown (substitui select nativo) ── */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.custom-dropdown__trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #DFDFDF;
+  border-radius: 4px;
+  font-family: var(--font-regular);
+  font-size: 13px;
+  color: var(--color-dark);
+  background: #fff;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+  user-select: none;
+  text-align: left;
+}
+
+.custom-dropdown__trigger:hover {
+  border-color: #C0C0C0;
+}
+
+.custom-dropdown.open .custom-dropdown__trigger {
+  border-color: #C0C0C0;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.04);
+}
+
+.custom-dropdown__trigger[disabled] {
+  background: #F6F6F6;
+  cursor: not-allowed;
+  color: var(--color-gray-medium);
+}
+
+.custom-dropdown__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.custom-dropdown__label.placeholder {
+  color: var(--color-gray-medium);
+}
+
+.custom-dropdown__chevron {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  color: #AAAAAA;
+  transition: transform 0.15s;
+}
+
+.custom-dropdown.open .custom-dropdown__chevron {
+  transform: rotate(180deg);
+}
+
+.custom-dropdown__list {
+  display: none;
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #E0E0E0;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 3px 0;
+}
+
+.custom-dropdown.open .custom-dropdown__list {
+  display: block;
+}
+
+.custom-dropdown__list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-dropdown__list::-webkit-scrollbar-thumb {
+  background: #D0D0D0;
+  border-radius: 4px;
+}
+
+.custom-dropdown__option {
+  padding: 6px 10px;
+  font-family: var(--font-regular);
+  font-size: 13px;
+  color: var(--color-dark);
+  cursor: pointer;
+  transition: background 0.1s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.custom-dropdown__option:hover {
+  background: #F6F6F6;
+}
+
+.custom-dropdown__option.selected {
+  background: #F8F8F8;
+  font-family: var(--font-bold);
+}
+
+/* ── Check obrigatório ───────────────────────── */
+.check-obrigatorio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #DFDFDF;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  color: #DFDFDF;
+  transition: all 0.15s;
+  flex-shrink: 0;
+  title: "Obrigatório";
+}
+
+.check-obrigatorio.checked {
+  background: #D8F5E5;
+  border-color: #00A960;
+  color: #00A960;
+}
+
+/* ── Responsividade ──────────────────────────── */
+@media (max-width: 900px) {
+  .etapa-row {
+    grid-template-columns: 28px 28px 1fr auto;
+  }
+  .campo-row {
+    grid-template-columns: 28px 1fr auto;
+  }
+  .anexo-row {
+    grid-template-columns: 28px 1fr auto auto;
+  }
+  .etapa-row .etapa-tipo-select,
+  .etapa-row .etapa-grupo-select,
+  .etapa-row .custom-dropdown,
+  .campo-row .campo-tipo-select,
+  .campo-row .campo-etapa-select,
+  .anexo-row .anexo-tipo-doc-select {
+    display: none;
+  }
+}

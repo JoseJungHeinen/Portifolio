@@ -1,0 +1,9 @@
+# dados de uso (ordem dos cards por usuário)
+/data/ordens/*
+!/data/ordens/.gitkeep
+
+# configuração local e segredos — nunca versionar
+/config/sistemas.local.php
+/config/sistemas/*.local.json
+*.log
+.env

@@ -1,0 +1,50 @@
+{
+    "id": "locadora",
+    "nome": "Locadora",
+    "cor": "#1D7348",
+    "cor_bg": "#DDF3E7",
+    "db": {
+        "host": "db.exemplo.local",
+        "port": 3306,
+        "name": "exemplo_locadora",
+        "user": "app_user",
+        "pass": "TROQUE_NO_SERVIDOR"
+    },
+    "tabela": "profiles",
+    "coluna_nome": "name",
+    "coluna_email": "email",
+    "coluna_senha": "password_hash",
+    "coluna_ativo": "is_active",
+    "hash": "bcrypt",
+    "coluna_role": "role",
+    "valor_admin": "admin",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha",
+    "roles_disponiveis": [
+        "admin",
+        "Administrador",
+        "Analista de Frota",
+        "Assistente de Frota"
+    ],
+    "sso_tipo": "token_localstorage",
+    "sso_login_api": "https://portal.exemplo.local/api/auth/login",
+    "sso_bearer_estatico": "TROQUE_NO_SERVIDOR",
+    "sso_campo_post_email": "email",
+    "sso_campo_post_senha": "password",
+    "sso_localstorage": [
+        {
+            "campo_resposta": "token",
+            "chave": "app_token"
+        },
+        {
+            "campo_resposta": "userId",
+            "chave": "app_user_id"
+        },
+        {
+            "campo_resposta": "user",
+            "chave": "app_user",
+            "json": true
+        }
+    ],
+    "home_url": "https://portal.exemplo.local/locadora/"
+}

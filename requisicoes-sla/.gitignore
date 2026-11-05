@@ -1,0 +1,5 @@
+.env
+deploy/deploy_config.local.json
+storage
+uploads
+vendor

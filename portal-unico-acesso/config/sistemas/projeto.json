@@ -1,0 +1,30 @@
+{
+    "id": "projeto",
+    "nome": "Projetos",
+    "cor": "#7A4FD0",
+    "cor_bg": "#ECE6FA",
+    "db": {
+        "ponte": {
+            "url": "https://app.exemplo.local/projetos/portal_ponte.php",
+            "token": "TROQUE_POR_TOKEN_GERADO"
+        }
+    },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha",
+    "coluna_ativo": "ativo",
+    "hash": "bcrypt",
+    "coluna_role": "perfil",
+    "valor_admin": "Admin",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha",
+    "roles_disponiveis": [
+        "Admin",
+        "Gerente",
+        "Membro",
+        "Visualizador"
+    ],
+    "login_url": "https://app.exemplo.local/projetos/login.php",
+    "home_url": "https://app.exemplo.local/projetos/login.php"
+}

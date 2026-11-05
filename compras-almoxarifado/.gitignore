@@ -1,0 +1,8 @@
+.env
+vendor/
+.playwright-mcp/
+.superpowers/
+*.log
+deploy/deploy_config.local.json
+storage/
+uploads/

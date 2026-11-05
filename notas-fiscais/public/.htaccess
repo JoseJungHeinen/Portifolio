@@ -1,0 +1,32 @@
+# ─────────────────────────────────────────────────────────────────
+# public/.htaccess — Workflow NF Exemplo
+# Redireciona todas as requisições não-arquivo para index.php.
+# Permite acesso direto apenas a arquivos e diretórios que existem
+# (assets: CSS, JS, fontes, imagens).
+# ─────────────────────────────────────────────────────────────────
+
+Options -Indexes
+
+# Ambiente de desenvolvimento local
+SetEnv APP_ENV dev
+
+RewriteEngine On
+
+# Não reescrever se o arquivo ou diretório existir (assets estáticos)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Todas as demais requisições vão para index.php
+RewriteRule ^ index.php [QSA,L]
+
+# ─── Headers de segurança para assets ────────────────────────────
+
+# Cache de assets estáticos (CSS, JS, fontes) — 30 dias
+<FilesMatch "\.(css|js|woff|woff2|ttf|eot|svg)$">
+  Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+
+# Sem cache para o entry point
+<FilesMatch "^index\.php$">
+  Header set Cache-Control "no-store, no-cache, must-revalidate"
+</FilesMatch>

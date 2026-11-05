@@ -1,0 +1,9 @@
+Options -Indexes
+RewriteEngine On
+
+# Serve arquivos estáticos diretamente
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Bloqueia acesso direto às pastas sensíveis fora de public
+RewriteRule ^(src|views|database|storage|logs|vendor)(/|$) - [F,L]

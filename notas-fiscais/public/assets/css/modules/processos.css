@@ -1,0 +1,1347 @@
+/* @versao Proc_12 V_07_12/08/2026 */
+/**
+ * public/assets/css/modules/processos.css
+ * Estilos específicos do módulo Processos de NF
+ */
+
+/* ── Wizard: indicador de progresso ────────────────────── */
+.wizard-steps {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wizard-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wizard-step-number {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  background: #EAEAEA;
+  color: #888;
+  border: 2px solid #EAEAEA;
+  transition: all 0.2s;
+}
+
+.wizard-step.is-active .wizard-step-number {
+  background: #2347C8;
+  color: #fff;
+  border-color: #2347C8;
+}
+
+.wizard-step.is-completed .wizard-step-number {
+  background: #00A960;
+  color: #fff;
+  border-color: #00A960;
+}
+
+.wizard-step-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #888;
+  white-space: nowrap;
+}
+
+.wizard-step.is-active .wizard-step-label {
+  color: #2347C8;
+}
+
+.wizard-step.is-completed .wizard-step-label {
+  color: #00A960;
+}
+
+.wizard-step-connector {
+  height: 2px;
+  background: #EAEAEA;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.wizard-step-connector.is-completed {
+  background: #00A960;
+}
+
+/* ── Etapa row no detalhe ───────────────────────────────── */
+.processo-etapa-row {
+  transition: box-shadow 0.15s;
+}
+
+.processo-etapa-row.is-atual {
+  box-shadow: 0 0 0 2px rgba(35,71,200, 0.2);
+}
+
+/* ── Timeline de histórico ──────────────────────────────── */
+.historico-timeline {
+  position: relative;
+}
+
+.historico-timeline-item {
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.historico-timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2347C8;
+  flex-shrink: 0;
+  margin-top: 3px;
+  z-index: 1;
+}
+
+.historico-timeline-line {
+  position: absolute;
+  left: 5px;
+  top: 15px;
+  bottom: 0;
+  width: 2px;
+  background: #EAEAEA;
+}
+
+.historico-timeline-content {
+  padding-bottom: 20px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Campo dinâmico ─────────────────────────────────────── */
+.campo-dinamico {
+  /* Container para cada campo do wizard/step2 */
+}
+
+.campo-dinamico input:focus,
+.campo-dinamico select:focus,
+.campo-dinamico textarea:focus {
+  border-color: #2347C8 !important;
+  outline: none;
+}
+
+/* ── Parcelas grid ──────────────────────────────────────── */
+.parcelas-grid {
+  overflow-x: auto;
+}
+
+.parcelas-grid table {
+  min-width: 500px;
+}
+
+/* ── Badge de processo TESTE ────────────────────────────── */
+.badge-teste {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  background: #FFF3CD;
+  color: #856404;
+}
+
+/* ── Paginação ──────────────────────────────────────────── */
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  background: #F6F6F6;
+  color: #606060;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.pagination-item:hover:not(.is-disabled):not(.is-active) {
+  background: #EAEAEA;
+}
+
+.pagination-item.is-active {
+  background: #2347C8;
+  color: #fff;
+}
+
+.pagination-item.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 32px;
+  font-size: 13px;
+  color: #888;
+}
+
+/* ── Upload de arquivo estilizado ────────────────────── */
+.file-upload-area {
+  border: 1.5px dashed #DFDFDF;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  text-align: center;
+}
+
+.file-upload-area:hover {
+  border-color: #2347C8;
+  background: #FFF5F5;
+}
+
+.file-upload-area.has-file {
+  border-style: solid;
+  border-color: #00A960;
+  background: #F0FDF4;
+}
+
+.file-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.file-upload-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2347C8;
+}
+
+.file-upload-hint {
+  font-size: 11px;
+  color: #888;
+}
+
+.file-upload-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #00A960;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   DETALHE — Workspace Split Layout
+   doc-pane (65%) + ctx-pane (35%)
+   Refinado: hierarquia tipográfica, proximidade, affordance
+   ════════════════════════════════════════════════════════════ */
+
+.ws {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Painel de documentos (esquerda) ──────────────────────── */
+.ws-doc {
+  flex: 0 0 65%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  background: var(--color-bg);
+}
+
+/* Seção de cards de anexos */
+.ws-att {
+  flex-shrink: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--color-gray-light);
+  padding: 16px 18px 14px;
+}
+
+.ws-att-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.ws-att-label {
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-gray-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ws-att-count {
+  font-size: 13.5px;
+  color: var(--color-gray-medium);
+}
+
+/* Navegação da barra de anexos: ‹ [scroll] › [Anexar] */
+.ws-att-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Botões de rolagem ‹ › */
+.ws-att-arrow {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid var(--color-gray-light);
+  background: #fff;
+  color: var(--color-gray-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, opacity 0.15s;
+}
+.ws-att-arrow:hover {
+  background: #EEF2FD;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.ws-att-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+  background: #fff;
+  border-color: var(--color-gray-light);
+  color: var(--color-gray-dark);
+}
+
+/* Carrossel de cards de anexo */
+.ws-att-scroll {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-behavior: smooth;
+}
+
+.ws-att-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+.ws-att-scroll::-webkit-scrollbar-thumb {
+  background: #D0D0D0;
+  border-radius: 3px;
+}
+.ws-att-scroll::-webkit-scrollbar-thumb:hover {
+  background: #B0B0B0;
+}
+
+/* Bullet de anexo — formato compacto */
+.ws-att-bullet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+  font-size: 12.5px;
+}
+
+.ws-att-bullet__icon {
+  color: currentColor;
+  opacity: 0.7;
+}
+
+.ws-att-bullet__name {
+  font-family: var(--font-bold);
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.ws-att-bullet__ext {
+  font-size: 11px;
+  opacity: 0.65;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Documento enviado (vermelho vivo) */
+.ws-att-bullet--uploaded {
+  background: var(--color-primary);
+  color: #fff;
+  border: 1.5px solid var(--color-primary);
+}
+.ws-att-bullet--uploaded:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+.ws-att-bullet--uploaded.active {
+  box-shadow: 0 0 0 3px rgba(35,71,200,0.2);
+}
+.ws-att-bullet--uploaded .ws-att-bullet__icon { opacity: 1; }
+
+/* Pendente obrigatório (borda tracejada vermelha, fundo vermelho claro) */
+.ws-att-bullet--req-pending {
+  background: rgba(35,71,200,0.06);
+  color: var(--color-primary);
+  border: 1.5px dashed rgba(35,71,200,0.45);
+}
+.ws-att-bullet--req-pending:hover {
+  background: rgba(35,71,200,0.10);
+  border-color: rgba(35,71,200,0.65);
+}
+
+/* Pendente opcional (borda tracejada cinza, fundo cinza claro) */
+.ws-att-bullet--opt-pending {
+  background: rgba(128,128,128,0.06);
+  color: var(--color-gray-dark);
+  border: 1.5px dashed rgba(128,128,128,0.4);
+}
+.ws-att-bullet--opt-pending:hover {
+  background: rgba(128,128,128,0.10);
+  border-color: rgba(128,128,128,0.6);
+}
+
+/* ── Checklist de exigências do fluxo (acima da barra de ações) ── */
+#ws-checklist > summary { list-style: none; }
+#ws-checklist > summary::-webkit-details-marker { display: none; }
+#ws-checklist > summary::marker { content: ''; }
+#ws-checklist > summary > svg:last-child { transition: transform 0.15s; }
+#ws-checklist[open] > summary > svg:last-child { transform: rotate(180deg); }
+
+/* ── Card de anexo antigo (mantido para compatibilidade) ── */
+.ws-att-card {
+  flex: 0 0 190px;
+  background: #fff;
+  border: 1.5px solid #E0E4EA;
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.ws-att-card:hover:not(.missing) {
+  border-color: #B0B8C4;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.ws-att-card.active {
+  border-color: var(--color-primary);
+  background: #FFF6F6;
+  box-shadow: 0 0 0 2px rgba(35,71,200,0.08);
+}
+
+.ws-att-card.missing {
+  opacity: 0.6;
+  border-style: dashed;
+  border-color: #C8CDD4;
+  cursor: default;
+}
+
+.ws-att-card.missing.required {
+  border-color: #F8A0A0;
+  background: #FFFAFA;
+  opacity: 1;
+}
+
+.ws-att-card__name {
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  margin-bottom: 3px;
+}
+
+.ws-att-card.active .ws-att-card__name {
+  color: var(--color-primary);
+}
+
+.ws-att-card.missing .ws-att-card__name {
+  color: var(--color-gray-medium);
+  font-style: italic;
+}
+
+.ws-att-card.missing.required .ws-att-card__name {
+  color: var(--color-danger);
+  font-style: normal;
+}
+
+.ws-att-card__meta {
+  font-size: 13.5px;
+  color: var(--color-gray-medium);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.ws-att-card__tag {
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 4px;
+}
+
+.ws-att-card__tag--req { color: var(--color-danger); }
+.ws-att-card__tag--opt { color: var(--color-gray-medium); }
+
+.ws-att-card__action {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #F0F2F5;
+}
+
+.ws-att-card__btn {
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.12s;
+}
+
+.ws-att-card__btn:hover {
+  opacity: 0.75;
+}
+
+/* Viewer head (barra escura sobre o viewer) */
+.ws-viewer-head {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 18px;
+  height: 42px;
+  background: #1E1E2E;
+  color: #94A3B8;
+  font-size: 13.5px;
+}
+
+.ws-viewer-head__name {
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: #E2E8F0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13.5px;
+}
+
+.ws-viewer-head__sep {
+  width: 1px;
+  height: 16px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
+.ws-viewer-head__pg {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.ws-viewer-head__nav {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.05);
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.ws-viewer-head__nav:hover {
+  background: rgba(255,255,255,0.12);
+  color: #E2E8F0;
+}
+
+.ws-viewer-head__dl {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  color: #94A3B8;
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+
+.ws-viewer-head__dl:hover {
+  background: rgba(255,255,255,0.14);
+  color: #E2E8F0;
+}
+
+/* Viewer canvas (área do iframe/imagem) */
+.ws-viewer-canvas {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background: #E8ECF1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ws-viewer-canvas iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+.ws-viewer-canvas img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+.ws-viewer-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-gray-medium);
+  text-align: center;
+  padding: 48px 32px;
+}
+
+.ws-viewer-empty__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Painel contextual (direita) ─────────────────────────── */
+.ws-ctx {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  border-left: 1px solid #E0E4EA;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+/* Barra de identificação do processo */
+.ws-proc {
+  flex-shrink: 0;
+  padding: 16px 22px 14px;
+  border-bottom: 1px solid var(--color-gray-light);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ws-proc__row1 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.ws-proc__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-gray-dark);
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--color-gray-light);
+  background: #fff;
+  text-decoration: none;
+  transition: background 0.12s, border-color 0.12s;
+  flex-shrink: 0;
+}
+
+.ws-proc__back:hover {
+  background: var(--color-bg);
+  border-color: #D0D0D0;
+}
+
+.ws-proc__sep {
+  width: 1px;
+  height: 18px;
+  background: var(--color-gray-light);
+  flex-shrink: 0;
+}
+
+.ws-proc__id {
+  font-size: 18px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-dark);
+  flex-shrink: 0;
+  letter-spacing: -0.01em;
+}
+
+.ws-proc__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ws-proc__meta {
+  font-size: 13.5px;
+  color: var(--color-gray-medium);
+  line-height: 1.4;
+}
+
+/* 2 linhas fixas — fluxo+loja / solicitante+data — não junta numa
+   linha só à toa nem depende de quanto espaço sobra */
+.ws-proc__meta-line {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.ws-proc__meta b {
+  color: var(--color-dark);
+  font-family: var(--font-bold);
+  font-weight: 700;
+}
+
+/* Banner contextual */
+.ws-banner {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  border-bottom: 1px solid;
+}
+
+.ws-banner svg { display: inline-block; flex-shrink: 0; }
+
+.ws-banner--alert   { background: #FFF7ED; border-color: #FFE0B2; color: #B45309; }
+.ws-banner--success { background: #ECFDF5; border-color: #A8E6C1; color: #065F46; }
+.ws-banner--info    { background: #EFF6FF; border-color: #BFDBFE; color: #1E40AF; }
+.ws-banner--test    { background: #FFFBEB; border-color: #FDE68A; color: #92400E; }
+.ws-banner--canc    { background: #FFF7ED; border-color: #FFE0B2; color: #B45309; }
+.ws-banner--dead    { background: #F9FAFB; border-color: #E5E7EB; color: var(--color-gray-medium); }
+
+/* Abas */
+.ws-tabs {
+  flex-shrink: 0;
+  display: flex;
+  border-bottom: 1px solid var(--color-gray-light);
+  background: #FAFBFC;
+  padding: 0 4px;
+}
+
+.ws-tab {
+  flex: 1;
+  text-align: center;
+  padding: 13px 8px 12px;
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-gray-medium);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.ws-tab:hover:not(.active) {
+  color: var(--color-dark);
+}
+
+.ws-tab.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.ws-tab__badge {
+  margin-left: 4px;
+  border-radius: 8px;
+  padding: 2px 7px;
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+/* Corpo das abas */
+.ws-body {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.ws-body::-webkit-scrollbar { width: 4px; }
+.ws-body::-webkit-scrollbar-thumb { background: #D8D8D8; border-radius: 4px; }
+
+.ws-panel {
+  display: none;
+}
+
+.ws-panel.active {
+  display: block;
+}
+
+/* Painéis que precisam de flex column (dados, parcelas, fluxo, histórico,
+   observações) — mesmo mecanismo comprovado em Parcelas/Fluxo: o painel
+   vira uma coluna flex de altura 100%, e o .ws-panel__inner (flex:1 +
+   overflow-y:auto abaixo) preenche exatamente o espaço disponível, mesmo
+   com pouco conteúdo. Nada de altura em porcentagem — é flex:1 direto,
+   que é o que realmente funciona aqui. */
+.ws-panel--flex {
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ws-panel--flex.active {
+  display: flex;
+  height: 100%;
+}
+
+.ws-panel--flex > .ws-panel__inner {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* Padding interno padrão das abas */
+.ws-panel__inner {
+  padding: 18px 22px;
+  background: var(--color-bg);
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ── Action bar (rodapé fixo) ─────────────────────────────
+   UMA LINHA no desktop: texto da etapa à esquerda, botões à direita. Era
+   empilhado em qualquer largura, e as duas faixas comiam altura que o corpo
+   do processo precisa — sobretudo com Parcelas e Observações expandidas.
+   Abaixo de 768px volta a empilhar (ver media query no fim do arquivo). */
+.ws-action-bar {
+  flex-shrink: 0;
+  background: #fff;
+  border-top: 1px solid var(--color-gray-light);
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.04);
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Quem só acompanha o processo não recebe o bloco de texto — sobra só a fileira
+   de botões, e ela fica CENTRALIZADA. Com o texto presente (aprovador, processo
+   encerrado) o space-between acima manda: texto à esquerda, botões à direita.
+   O :only-child resolve os dois casos sem condicional no PHP. */
+.ws-action-bar__btns:only-child {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* flex:1 + min-width:0 é o que segura o texto no lugar: sem os dois, um rótulo
+   longo empurra os botões para fora da barra. Com eles, o texto trunca e os
+   botões nunca perdem espaço. */
+.ws-action-bar__step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ws-action-bar__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--color-primary);
+}
+
+.ws-action-bar__info {
+  min-width: 0;
+}
+
+/* Trunca com "..." em vez de quebrar: é o que mantém a barra em uma linha.
+   O texto inteiro continua acessível pelo title do elemento. */
+.ws-action-bar__label {
+  font-size: 14px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ws-action-bar__sub {
+  font-size: 12.5px;
+  color: var(--color-gray-medium);
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ws-action-bar__btns {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Botões da action bar */
+.ws-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  border: 1.5px solid transparent;
+}
+
+.ws-btn svg { display: inline-block; }
+
+.ws-btn--aprovar {
+  background: #00A960;
+  color: #fff;
+  border-color: #00A960;
+  padding: 8px 20px;
+}
+.ws-btn--aprovar:hover { background: #008A4E; border-color: #008A4E; }
+
+.ws-btn--devolver {
+  background: #fff;
+  color: var(--color-warning);
+  border-color: var(--color-warning);
+}
+.ws-btn--devolver:hover { background: #FFF7ED; }
+
+.ws-btn--cancelar {
+  background: transparent;
+  color: var(--color-danger);
+  border-color: #F0D0D8;
+  font-size: 13.5px;
+}
+.ws-btn--cancelar:hover { background: #FFF5F7; border-color: var(--color-danger); }
+
+.ws-btn--ghost {
+  background: transparent;
+  color: var(--color-gray-dark);
+  border-color: var(--color-gray-light);
+  font-size: 13.5px;
+}
+.ws-btn--ghost:hover { background: var(--color-bg); border-color: #D0D0D0; }
+
+/* ── Botão só-ícone + tooltip ─────────────────────────────
+   Ações secundárias da action bar (completar, editar, cancelar, devolver,
+   descartar) viram um quadrado de 38px com o ícone em 18px. O rótulo some
+   da tela mas continua no aria-label; o texto do data-tip aparece no hover
+   em CSS puro — o title nativo demora ~1s e não segue o design system. */
+.ws-btn--icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  gap: 0;
+  justify-content: center;
+  position: relative;
+}
+
+.ws-btn--icon::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  background: var(--color-dark);
+  color: #fff;
+  font-family: var(--font-regular);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: normal;
+  width: max-content;
+  max-width: 240px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.ws-btn--icon:hover::after,
+.ws-btn--icon:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sem data-tip não existe balão — evita retângulo preto vazio. */
+.ws-btn--icon:not([data-tip])::after { content: none; }
+
+/* ── Cards de dados (aba Dados) ──────────────────────────── */
+.ws-card {
+  background: #fff;
+  border: 1px solid #E5E8ED;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.ws-card__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #F0F2F5;
+  background: #FAFBFC;
+}
+
+.ws-card__title {
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-gray-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ws-card__grid2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.ws-card__grid3 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.ws-card__field {
+  padding: 14px 20px;
+  border-bottom: 1px solid #F6F6F6;
+}
+
+.ws-card__grid2 .ws-card__field:nth-child(odd) { border-right: 1px solid #F0F2F5; }
+.ws-card__grid3 .ws-card__field:not(:last-child) { border-right: 1px solid #F0F2F5; }
+
+.ws-card__field--full {
+  padding: 14px 20px;
+  border-bottom: 1px solid #F6F6F6;
+}
+
+/* Remover borda inferior apenas do último elemento direto do card */
+.ws-card > .ws-card__field--full:last-child,
+.ws-card > .ws-card__field:last-child,
+.ws-card > .ws-card__grid2:last-child > .ws-card__field,
+.ws-card > .ws-card__grid3:last-child > .ws-card__field { border-bottom: none; }
+
+/* Dentro de grids que NÃO são o último filho, todos os campos mantêm borda inferior */
+.ws-card__grid2:not(:last-child) > .ws-card__field,
+.ws-card__grid3:not(:last-child) > .ws-card__field { border-bottom: 1px solid #F6F6F6; }
+
+.ws-card__lbl {
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-gray-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.ws-card__val {
+  font-size: 15px;
+  color: var(--color-dark);
+  line-height: 1.45;
+  margin-top: 2px;
+  display: block;
+}
+
+.ws-card__val--hero {
+  font-size: 17px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.ws-card__val--amount {
+  font-size: 25px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+.ws-card__val--mono {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--color-gray-dark);
+}
+
+.ws-card__code {
+  display: block;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 13.5px;
+  color: var(--color-gray-dark);
+  background: #F8F9FA;
+  border: 1px solid #E5E8ED;
+  border-radius: 4px;
+  padding: 7px 10px;
+  word-break: break-all;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+/* Linhas key-value (campos do processo) */
+.ws-card__row {
+  display: flex;
+  align-items: baseline;
+  padding: 14px 20px;
+  border-bottom: 1px solid #F6F6F6;
+}
+.ws-card__row:last-child { border-bottom: none; }
+
+.ws-card__row-key {
+  font-size: 13.5px;
+  font-family: var(--font-bold);
+  font-weight: 700;
+  color: var(--color-gray-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  width: 150px;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+.ws-card__row-val {
+  font-size: 15px;
+  color: var(--color-dark);
+  flex: 1;
+  line-height: 1.45;
+}
+
+/* ── Fix modais na tela workspace ─────────────────────────
+   O design-system.css usa transition em visibility/opacity
+   que conflita com position:fixed dentro de overflow:hidden.
+   Solução: transição direta, sem delay de visibility. */
+.main-content--full .modal-overlay {
+  transition: none;
+}
+.main-content--full .modal-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ── Responsividade workspace ────────────────────────────── */
+@media (max-width: 1024px) {
+  .ws {
+    flex-direction: column;
+    height: auto;
+  }
+  .ws-doc {
+    flex: none;
+    max-height: 50vh;
+  }
+  .ws-ctx {
+    border-left: none;
+    border-top: 1px solid var(--color-gray-light);
+  }
+  /* Em tela estreita volta a empilhar: lado a lado, o texto sobraria em "..."
+     quase inteiro e os botões ficariam espremidos. */
+  .ws-action-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .ws-action-bar__label,
+  .ws-action-bar__sub {
+    white-space: normal;
+    overflow: visible;
+    overflow-wrap: break-word;
+  }
+  .ws-action-bar__btns { flex-wrap: wrap; }
+}
+
+@media (max-width: 1366px) {
+  .ws-att-card {
+    flex: 0 0 170px;
+  }
+  .ws-proc__id {
+    font-size: 18px;
+  }
+}
+
+/* ─── Modal confirmação de processo criado ────────────────── */
+
+.prc-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 19, 31, 0.60);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.prc-confirm-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+  padding: 48px 40px 40px;
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+}
+
+.prc-confirm-icon {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.prc-confirm-title {
+  font-family: var(--font-bold, 'Segoe UI', sans-serif);
+  font-size: 22px;
+  color: #141922;
+  margin: 0 0 8px;
+}
+
+.prc-confirm-sub {
+  font-size: 14px;
+  color: #606060;
+  margin: 0 0 20px;
+}
+
+.prc-confirm-codigo {
+  font-family: var(--font-bold, 'Segoe UI', sans-serif);
+  font-size: 36px;
+  font-weight: 700;
+  color: #2347C8;
+  letter-spacing: 2px;
+  background: #FFF5F5;
+  border: 2px solid #2347C8;
+  border-radius: 8px;
+  padding: 12px 24px;
+  margin: 0 auto 16px;
+  display: inline-block;
+  user-select: all;
+}
+
+.prc-confirm-hint {
+  font-size: 12px;
+  color: #888888;
+  margin: 0 0 28px;
+}
+
+.prc-confirm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2347C8;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 32px;
+  font-family: var(--font-bold, 'Segoe UI', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.prc-confirm-btn:hover {
+  background: #1B38A0;
+}

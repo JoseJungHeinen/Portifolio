@@ -1,0 +1,31 @@
+{
+    "id": "notas",
+    "nome": "Notas",
+    "cor": "#B3261E",
+    "cor_bg": "#FAE6E4",
+    "db": {
+        "host": "db.exemplo.local",
+        "port": 3306,
+        "name": "exemplo_notas",
+        "user": "app_user",
+        "pass": "TROQUE_NO_SERVIDOR"
+    },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha_hash",
+    "coluna_ativo": "ativo",
+    "hash": "bcrypt",
+    "coluna_role": "perfil",
+    "valor_admin": "admin",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha",
+    "roles_disponiveis": [
+        "solicitante",
+        "gestor",
+        "diretor",
+        "admin"
+    ],
+    "sso_tipo": "link_direto",
+    "home_url": "https://notas.exemplo.local/Notas/"
+}

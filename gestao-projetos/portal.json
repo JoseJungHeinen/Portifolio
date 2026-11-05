@@ -1,0 +1,25 @@
+{
+    "id": "projeto",
+    "nome": "Projeto",
+    "cor": "#534AB7",
+    "cor_bg": "#eeedfe",
+    "db": {
+        "host": "localhost",
+        "name": "projeto",
+        "user": "app_user",
+        "pass": "TROQUE_NO_SERVIDOR"
+    },
+    "tabela": "usuarios",
+    "coluna_nome": "nome",
+    "coluna_email": "email",
+    "coluna_senha": "senha",
+    "coluna_ativo": "ativo",
+    "hash": "bcrypt",
+    "coluna_role": "perfil",
+    "valor_admin": "Admin",
+    "roles_disponiveis": ["Admin", "Gerente", "Membro", "Visualizador"],
+    "login_url": "http://Projeto.test/login.php",
+    "home_url": "http://Projeto.test/pages/dashboard.php",
+    "campo_post_email": "email",
+    "campo_post_senha": "senha"
+}

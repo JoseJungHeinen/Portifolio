@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Portfólio de José Henrique Jung Heinen: sistemas web, automação e suporte de TI.">
+<meta name="author" content="José Henrique Jung Heinen">
+<title>José Heinen · Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: etiqueta de patrimônio como identidade — cada projeto é um "item tombado" com código, ilustração à esquerda e ficha à direita */
+:root{
+  --bg:#EDF0F3; --paper:#FFFFFF; --ink:#141922; --muted:#5B6575; --line:#D3D9E1;
+  --accent:#2347C8; --accent-soft:#E2E8FB; --code-bg:#151B26; --code-fg:#D7DEEA; --code-acc:#8FB0FF;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F131A; --paper:#171D27; --ink:#E8ECF2; --muted:#9AA5B5; --line:#2A3342;
+  --accent:#86A5FF; --accent-soft:#1E2A47; --code-bg:#0A0D13; --code-fg:#D7DEEA; --code-acc:#8FB0FF; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F131A; --paper:#171D27; --ink:#E8ECF2; --muted:#9AA5B5; --line:#2A3342;
+  --accent:#86A5FF; --accent-soft:#1E2A47; --code-bg:#0A0D13; --code-fg:#D7DEEA; --code-acc:#8FB0FF; color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:48px 64px;display:flex;flex-direction:column;gap:72px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.05}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* HERO: etiqueta */
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;align-items:end}
+.hero h1{font-size:clamp(44px,8vw,92px);font-weight:800;font-variation-settings:"wdth" 72;letter-spacing:-.01em;text-transform:uppercase}
+.hero .role{margin-top:18px;font-size:19px;color:var(--muted);max-width:52ch}
+.hero .role strong{color:var(--ink);font-weight:600}
+.tag{background:var(--paper);border:1.5px solid var(--ink);border-radius:10px;padding:20px 22px;font-family:var(--mono);font-size:13px;display:flex;flex-direction:column;gap:12px;position:relative}
+.tag::before{content:"";position:absolute;top:50%;left:-8px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:1.5px solid var(--ink);transform:translateY(-50%);clip-path:inset(0 0 0 50%)}
+.tag-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.tag-row span:first-child{color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:11px}
+.tag-row span:last-child{text-align:right;min-width:0;overflow-wrap:anywhere}
+.barcode{width:100%;height:64px;display:block;color:var(--ink)}
+.barcode-txt{text-align:center;letter-spacing:.3em;font-size:12px}
+.email{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.email code{font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+button.copy{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--paper);border:0;border-radius:6px;padding:6px 10px;cursor:pointer}
+button.copy:hover{filter:brightness(1.1)}
+
+/* resumo */
+.intro{display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px;border-top:1.5px solid var(--ink);padding-top:20px}
+.intro p{font-size:20px;line-height:1.55;max-width:62ch}
+
+/* projetos */
+.projects{display:flex;flex-direction:column;gap:28px}
+.projects > header{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:20px}
+.projects > header h2{font-size:clamp(30px,4.5vw,44px);font-weight:750;font-variation-settings:"wdth" 80;text-transform:uppercase}
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.proj .vis{background-color:var(--bg);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:24px 24px;background-position:-1px -1px;padding:32px;display:flex;align-items:center;justify-content:center;min-height:320px;border-right:1px solid var(--line);min-width:0}
+.proj .info{padding:32px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.code-id{display:inline-flex;align-self:flex-start;font-family:var(--mono);font-size:12px;letter-spacing:.1em;background:var(--accent-soft);color:var(--accent);padding:4px 10px;border-radius:4px}
+.proj h3{font-size:30px;font-weight:700;font-variation-settings:"wdth" 85}
+.facts{display:grid;gap:14px;margin:0}
+.facts div{display:grid;gap:2px}
+.facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-size:15.5px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.chips span{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--muted)}
+.proj.flip .vis{order:2;border-right:0;border-left:1px solid var(--line)}
+
+/* ilustrações */
+.labels{display:flex;flex-direction:column;gap:16px;width:100%;max-width:340px}
+.lbl{background:#fff;color:#111;border-radius:6px;box-shadow:0 1px 0 rgba(0,0,0,.08),0 6px 18px rgba(20,25,34,.12);padding:12px 14px;font-family:var(--mono);font-size:11px;line-height:1.3}
+.lbl b{font-size:18px;letter-spacing:.04em}
+.lbl .row{display:flex;gap:12px;align-items:center}
+.lbl svg{display:block}
+.epl{background:var(--code-bg);color:var(--code-fg);font-family:var(--mono);font-size:12px;line-height:1.55;border-radius:8px;padding:12px 14px;margin:0;overflow-x:auto;white-space:pre}
+.epl i{font-style:normal;color:var(--code-acc)}
+
+.slides{position:relative;width:100%;max-width:360px;aspect-ratio:4/3.2}
+.slide{position:absolute;width:78%;aspect-ratio:16/9;background:#fff;border-radius:6px;box-shadow:0 6px 18px rgba(20,25,34,.16);padding:10px 12px;font-family:var(--display);color:#141922;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.slide .t{font-weight:700;font-size:13px;font-variation-settings:"wdth" 85}
+.slide .bar{height:6px;border-radius:3px;background:#DCE2EA}
+.slide .bar.s{width:60%}
+.slide .shot{flex:1;border-radius:4px;background:repeating-linear-gradient(0deg,#EEF1F5 0 8px,#E3E8EF 8px 9px);border:1px solid #D3D9E1;position:relative}
+.slide .shot::after{content:"";position:absolute;left:14%;top:30%;width:26%;height:22%;border:2px solid #E5484D;border-radius:4px}
+.slide .num{font-family:var(--mono);font-size:9px;color:#5B6575;align-self:flex-end}
+
+.manual{display:flex;align-items:center;gap:18px;width:100%;max-width:400px;justify-content:center;flex-wrap:wrap}
+.scans{position:relative;width:110px;height:140px}
+.scans div{position:absolute;inset:0;background:#F4F2EC;border:1px solid #CFCAC0;border-radius:3px;box-shadow:0 3px 8px rgba(0,0,0,.08)}
+.scans div:nth-child(1){transform:rotate(-7deg) translate(-6px,4px)}
+.scans div:nth-child(2){transform:rotate(4deg) translate(5px,2px)}
+.scans div:nth-child(3){background:repeating-linear-gradient(0deg,transparent 0 9px,#BDB6A8 9px 10px) 12px 18px/70% 80% no-repeat,#F7F5F0}
+.arrow{font-family:var(--mono);color:var(--accent);font-size:12px;text-align:center;line-height:1.3}
+.arrow::before{content:"";display:block;width:44px;height:2px;background:var(--accent);margin:0 auto 6px;box-shadow:6px 0 0 -0px var(--accent)}
+.pdf{background:#fff;color:#141922;border-radius:6px;box-shadow:0 6px 18px rgba(20,25,34,.16);width:170px;font-family:var(--mono);font-size:10.5px;overflow:hidden}
+.pdf header{background:#B42318;color:#fff;padding:6px 10px;font-weight:500;letter-spacing:.06em}
+.pdf ol{margin:0;padding:8px 10px 10px 28px;display:grid;gap:3px}
+.pdf li::marker{color:#8A94A6}
+.pdf .more{padding:0 10px 10px;color:#5B6575}
+
+
+.m365{display:flex;flex-direction:column;gap:14px;width:100%;max-width:400px}
+.term{background:var(--code-bg);color:var(--code-fg);border-radius:8px;overflow:hidden;font-family:var(--mono);font-size:11.5px;line-height:1.6}
+.term .bar{display:flex;gap:6px;padding:8px 10px;background:rgba(255,255,255,.06)}
+.term .bar span{width:9px;height:9px;border-radius:50%;background:#4A5568}
+.term pre{margin:0;padding:10px 12px 12px;overflow-x:auto}
+.term i{font-style:normal;color:var(--code-acc)}
+.term em{font-style:normal;color:#7EE2A8}
+.sheet{background:#fff;color:#141922;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(20,25,34,.12);font-family:var(--mono);font-size:11px}
+.sheet table{width:100%;border-collapse:collapse}
+.sheet th,.sheet td{border:1px solid #E1E5EB;padding:4px 8px;text-align:left;white-space:nowrap}
+.sheet th{background:#F1F3F6;color:#5B6575;font-weight:500}
+.sheet tr.p td{background:#FFF4CC}
+.sheet tr.e td{background:#E3EEFF}
+
+
+.bd{width:100%;max-width:400px;background:#fff;color:#141922;border-radius:8px;box-shadow:0 8px 22px rgba(20,25,34,.14);overflow:hidden;font-family:var(--body);font-size:11.5px}
+.bd .roles{display:flex;gap:0;border-bottom:1px solid #E1E5EB;font-family:var(--mono);font-size:10px}
+.bd .roles span{padding:6px 10px;color:#5B6575;border-right:1px solid #E1E5EB}
+.bd .roles span.on{background:#141922;color:#fff}
+.bd .clockrow{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:6px 10px;background:repeating-linear-gradient(-45deg,#FAEFD6 0 8px,#F4E3BD 8px 16px);font-family:var(--mono);font-size:10px;color:#8E5B00}
+.bd .head{padding:12px 12px 10px;display:flex;justify-content:space-between;align-items:end;gap:10px}
+.bd .head b{display:block;font-family:var(--display);font-size:22px;font-weight:800;font-variation-settings:"wdth" 75;line-height:1}
+.bd .head small{font-family:var(--mono);font-size:9.5px;color:#5B6575}
+.bd .cd{text-align:right;font-family:var(--mono)}
+.bd .cd strong{display:block;font-size:15px}
+.bd .track{position:relative;height:6px;margin:0 12px 10px;background:#E8ECEA}
+.bd .track span{position:absolute;left:0;top:0;bottom:0;width:72%;background:#2347C8}
+.bd .track::after{content:"";position:absolute;right:0;top:-4px;bottom:-4px;border-right:2px dashed #B3261E}
+.bd table{width:100%;border-collapse:collapse;font-size:10.5px}
+.bd td{padding:5px 12px;border-top:1px solid #EEF0F3;white-space:nowrap}
+.bd td.n{text-align:right;font-family:var(--mono)}
+.bd .pl{display:inline-block;padding:1px 6px;border-radius:999px;font-size:9.5px;font-weight:600}
+.pl.c{background:#E2E8FB;color:#2347C8}.pl.l{background:#EEF0F3;color:#141922}.pl.d{background:#FAE6E4;color:#B3261E}
+
+
+/* sistemas */
+.systems{display:flex;flex-direction:column;gap:28px}
+.systems > header{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:1.5px solid var(--ink);padding-top:20px}
+.systems > header h2{font-size:clamp(30px,4.5vw,44px);font-weight:750;font-variation-settings:"wdth" 80;text-transform:uppercase}
+.systems > header p{max-width:52ch;color:var(--muted);font-size:15.5px}
+.flow{display:flex;flex-direction:column;gap:10px;width:100%;max-width:380px}
+.step{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center;background:#fff;color:#141922;border-radius:8px;padding:9px 12px;box-shadow:0 4px 12px rgba(20,25,34,.1);font-size:12.5px}
+.step i{font-style:normal;font-family:var(--mono);font-size:10px;color:#fff;background:#2347C8;border-radius:5px;text-align:center;padding:4px 0}
+.step b{font-weight:600}
+.step small{font-family:var(--mono);font-size:10px;color:#5B6575}
+.step.alt i{background:#1D7348}
+.sys-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.sys{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.sys h3{font-size:23px;font-weight:700;font-variation-settings:"wdth" 85}
+.sys p{font-size:15px;color:var(--ink)}
+.sys ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14.5px;color:var(--muted)}
+.sys .chips{margin-top:auto}
+.sys .live{display:inline-flex;align-self:flex-start;gap:6px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sys .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot,#1D7348)}
+.sys .live.dev{--dot:#C98A00}
+.sys-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.how{display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px;background:var(--accent-soft);border-radius:14px;padding:28px}
+.how p{max-width:66ch}
+.how ol{margin:0;padding-left:20px;display:grid;gap:6px;max-width:66ch}
+@media (max-width:860px){.sys-grid{grid-template-columns:minmax(0,1fr)}.how{grid-template-columns:minmax(0,1fr);gap:12px;padding:22px 20px}}
+
+.code-link{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;font:500 12.5px var(--mono);color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:5px 10px;margin-top:4px}
+.code-link:hover{border-color:var(--accent);background:var(--accent-soft)}
+.code-link svg{width:14px;height:14px;fill:currentColor}
+.gh{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--mono);color:var(--ink);text-decoration:none}
+.gh svg{width:16px;height:16px;fill:currentColor}
+.contact .gh{color:var(--bg)}
+/* competências */
+.skills{border-top:1.5px solid var(--ink);padding-top:20px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px}
+.skill-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 32px}
+.skill-grid h3{font-size:19px;font-weight:700;font-variation-settings:"wdth" 90;margin-bottom:8px}
+.skill-grid ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;color:var(--muted);font-size:15px}
+
+/* contato */
+.contact{background:var(--ink);color:var(--bg);border-radius:16px;padding:40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.contact h2{font-size:clamp(30px,5vw,48px);font-weight:800;font-variation-settings:"wdth" 75;text-transform:uppercase}
+.contact .email code{font-size:16px;color:var(--bg)}
+.contact p{color:var(--bg);opacity:.75;margin-top:6px}
+.note{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:center}
+
+@media (max-width:860px){
+  .hero,.intro,.skills{grid-template-columns:minmax(0,1fr)}
+  .intro,.skills{gap:14px}
+  .proj,.proj.flip{grid-template-columns:minmax(0,1fr)}
+  .proj .vis,.proj.flip .vis{order:0;border:0;border-bottom:1px solid var(--line);min-height:0;padding:28px 20px}
+  .proj .info{padding:24px 20px}
+  .skill-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .contact{padding:28px 22px}
+}
+@media (max-width:520px){
+  .skill-grid{grid-template-columns:minmax(0,1fr)}
+  .wrap{gap:56px;padding-block:32px 48px}
+  .intro p{font-size:18px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .lbl,.slide,.pdf,  .proj:hover .lbl:first-child,.proj:hover .slide:last-child,.proj:hover .pdf,.proj:hover }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="hero" aria-labelledby="nome">
+    <div>
+      <p class="eyebrow">Portfólio · 2026</p>
+      <h1 id="nome">José Henrique Jung Heinen</h1>
+      <p class="role"><strong>Assistente de TI com atuação em desenvolvimento</strong> no Grupo Betiolo, rede de concessionárias no Rio Grande do Sul. Desenvolvo os sistemas web internos do grupo (compras, inventário, notas, veículos) em PHP, MySQL e Oracle, além de cuidar do suporte, do Microsoft 365 e da documentação.</p>
+    </div>
+    <aside class="tag" aria-label="Contato">
+      <div class="tag-row"><span>Nome</span><span>J. H. J. Heinen</span></div>
+      <div class="tag-row"><span>Função</span><span>Assistente de TI · Dev</span></div>
+      <div class="tag-row"><span>Local</span><span>Lajeado · RS</span></div>
+      <svg class="barcode" id="barcode" viewBox="0 0 300 64" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <div class="barcode-txt" aria-hidden="true">JHJH-TI-2026</div>
+      <a class="gh" href="https://github.com/JoseJungHeinen" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>github.com/JoseJungHeinen</a>
+      <div class="email"><code id="mail1">jose.heinen@universo.univates.br</code><button class="copy" data-target="mail1" type="button">Copiar</button></div>
+    </aside>
+  </section>
+
+  <section class="intro">
+    <p class="eyebrow">Sobre</p>
+    <p>Trabalho entre o atendimento e o desenvolvimento: resolvo chamados e acessos no dia a dia e, quando um problema se repete, construo a ferramenta, o modelo ou o material que evita que ele volte. Os sistemas e projetos abaixo saíram dessa rotina. Uso o Claude Code como parceiro de desenvolvimento: eu levanto a necessidade com o setor, defino as regras e valido cada entrega; a IA acelera a escrita do código.</p>
+  </section>
+
+  <section class="systems" aria-labelledby="sys-h">
+    <header>
+      <h2 id="sys-h">Sistemas web</h2>
+      <p>Aplicações em uso pelos setores, desenvolvidas de abril a novembro de 2026 em mais de 110 sessões de trabalho.</p>
+    </header>
+
+    <article class="proj">
+      <div class="vis">
+        <div class="flow" aria-label="Ilustração do fluxo do sistema de compras">
+          <div class="step"><i>REQ</i><b>Requisição de compra</b><small>solicitante</small></div>
+          <div class="step"><i>COT</i><b>Cotação com fornecedores</b><small>e-mail automático</small></div>
+          <div class="step"><i>CMP</i><b>Comparativo de preços</b><small>comprador</small></div>
+          <div class="step"><i>APR</i><b>Aprovação por alçada</b><small>diretoria</small></div>
+          <div class="step"><i>OC</i><b>Ordem de compra em PDF</b><small>OC-AAAAMM-Nº</small></div>
+          <div class="step alt"><i>EST</i><b>Entrada no estoque</b><small>por filial</small></div>
+        </div>
+      </div>
+      <div class="info">
+        <span class="code-id">SIS · PHP</span>
+        <h3>Sistema de Compras e Almoxarifado</h3>
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>As compras do grupo passavam por e-mail e planilha, sem visão de quem pediu, quanto custou, quem aprovou e o que havia em estoque em cada filial.</dd></div>
+          <div><dt>O que fiz</dt><dd>Desenvolvi o sistema inteiro: requisições de compra e internas, cotação com envio de e-mail aos fornecedores, comparativo, aprovação por alçada, ordem de compra em PDF, contratos com anexos, avaliação e crédito de fornecedores, estoque por filial com entradas, saídas e transferências, perfis com permissões editáveis e um dashboard que cada usuário personaliza.</dd></div>
+          <div><dt>Resultado</dt><dd>O projeto mais longo do portfólio, com 46 sessões e centenas de funcionalidades e correções. Hoje concentra o fluxo de compra do pedido até a entrada da mercadoria.</dd></div>
+        </dl>
+        <div class="chips"><span>PHP (MVC)</span><span>MySQL / MariaDB</span><span>JavaScript</span><span>PDF</span><span>E-mail</span><span>Controle de acesso</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/compras-almoxarifado" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </div>
+    </article>
+
+    <div class="sys-grid">
+      <article class="sys">
+        <div class="sys-top"><span class="code-id">INV · ORACLE</span><span class="live">Em uso</span></div>
+        <h3>Inventário de peças</h3>
+        <p>Sistema de contagem do estoque de peças com coletor, segunda contagem por dupla e tela de tomada de decisão para as divergências.</p>
+        <ul>
+          <li>Busca de itens direto no ERP (Oracle), com MySQL como reserva</li>
+          <li>Saldo por loja, código de fábrica, código público e OEM</li>
+          <li>Ajustes e descartes com relatório e gravação no ERP</li>
+        </ul>
+        <div class="chips"><span>PHP</span><span>Oracle</span><span>MySQL</span><span>AJAX</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/inventario-pecas" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </article>
+
+      <article class="sys">
+        <div class="sys-top"><span class="code-id">SSO · PORTAL</span><span class="live">Em uso</span></div>
+        <h3>Portal único de acesso</h3>
+        <p>Uma tela de login com cards para todos os sistemas internos. O usuário entra uma vez e acessa compras, veículos, inventário, notas e locadora sem novo login.</p>
+        <ul>
+          <li>Administração de usuários e de quais sistemas cada um vê</li>
+          <li>Permissões por tela, organizadas em abas por sistema</li>
+          <li>Cadastro manual de sistemas hospedados em servidores diferentes</li>
+          <li>Seguiu um manual de design próprio, baseado na identidade do grupo</li>
+        </ul>
+        <div class="chips"><span>PHP</span><span>Autenticação</span><span>Design system</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/portal-unico-acesso" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </article>
+
+      <article class="sys">
+        <div class="sys-top"><span class="code-id">NF · FINANCEIRO</span><span class="live">Em uso</span></div>
+        <h3>Sistema de notas fiscais</h3>
+        <p>Manutenção e evolução do sistema financeiro de processos de notas, desenvolvido em conjunto com outra pessoa.</p>
+        <ul>
+          <li>Aprovação em lote com observações, anexos e devolução</li>
+          <li>Vínculo de NFS-e a um processo de NF-e já existente</li>
+          <li>Diagnóstico de lentidão resolvido com índice no banco</li>
+          <li>Investigação de processos duplicados</li>
+        </ul>
+        <div class="chips"><span>PHP</span><span>MySQL</span><span>Performance</span><span>Deploy</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/notas-fiscais" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </article>
+
+      <article class="sys">
+        <div class="sys-top"><span class="code-id">REQ · SLA</span><span class="live">Em uso</span></div>
+        <h3>Requisições com SLA</h3>
+        <p>Pedido do setor de compras: um sistema separado só para requisições, com prioridade definida junto com eles.</p>
+        <ul>
+          <li>Urgência por cor: emergencial (1 dia), urgente (2), planejado (5) e estratégico</li>
+          <li>Importação da lista de fornecedores por planilha</li>
+          <li>Campos do vencedor e parcelas puxados da cotação</li>
+        </ul>
+        <div class="chips"><span>PHP</span><span>MySQL</span><span>Regras de negócio</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/requisicoes-sla" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </article>
+
+      <article class="sys">
+        <div class="sys-top"><span class="code-id">VEI · PORTAL</span><span class="live">Em uso</span></div>
+        <h3>Portal de veículos</h3>
+        <p>Melhorias no portal usado pelos vendedores e criação de uma rotina de versionamento e deploy para os sistemas.</p>
+        <ul>
+          <li>Nova marca no catálogo de acessórios, com filtros e cores próprias</li>
+          <li>Contador de caracteres nos opcionais do veículo</li>
+          <li>Comandos de deploy com controle de versão e teste antes de publicar</li>
+        </ul>
+        <div class="chips"><span>PHP</span><span>Linux</span><span>Deploy</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/portal-veiculos" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </article>
+
+      <article class="sys">
+        <div class="sys-top"><span class="code-id">OFP · PÓS-VENDA</span><span class="live dev">Em desenvolvimento</span></div>
+        <h3>Controle de OFP</h3>
+        <p>Sistema para as operações de OFP do estoque de peças, com visão para gerente, comprador, financeiro e direção.</p>
+        <ul>
+          <li>Escopo baseado no manual de P&amp;A e nas duas planilhas usadas hoje</li>
+          <li>Especificação aprovada antes do código</li>
+          <li>Plano executado em tarefas com revisão entre cada uma</li>
+        </ul>
+        <div class="chips"><span>PHP</span><span>MySQL</span><span>Especificação</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/controle-ofp" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </article>
+
+      <article class="sys">
+        <div class="sys-top"><span class="code-id">PRJ · GANTT</span><span class="live">Em uso</span></div>
+        <h3>Gestão de projetos</h3>
+        <p>Novas funções no sistema de projetos da TI: quadro Kanban com registro de horas e um cronograma em Gantt.</p>
+        <ul>
+          <li>Datas de início e fim nos projetos</li>
+          <li>Gráfico de Gantt desenhado em JavaScript, sem biblioteca</li>
+        </ul>
+        <div class="chips"><span>PHP</span><span>JavaScript</span><span>Git</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/gestao-projetos" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </article>
+
+      <article class="sys">
+        <div class="sys-top"><span class="code-id">RPA → SIS</span><span class="live dev">Em desenvolvimento</span></div>
+        <h3>Locadora: frota e multas</h3>
+        <p>Gestão da frota e das solicitações de serviço, e a consulta de multas no DETRAN que antes rodava num robô UiPath alimentado por planilha.</p>
+        <ul>
+          <li>Análise do robô existente e da planilha de controle</li>
+          <li>Desenho de como a consulta vira uma função do sistema</li>
+        </ul>
+        <div class="chips"><span>TypeScript</span><span>React</span><span>UiPath</span><span>PHP</span></div>
+        <a class="code-link" href="https://github.com/JoseJungHeinen/Portifolio/tree/main/locadora-frota-multas" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Ver código</a>
+      </article>
+    </div>
+
+    <div class="how">
+      <p class="eyebrow">Como trabalho</p>
+      <ol>
+        <li>Levanto a necessidade com o setor e reúno o material que eles já usam (planilhas, manuais, fluxogramas).</li>
+        <li>Escrevo ou aprovo a especificação antes de qualquer código.</li>
+        <li>Desenvolvo com o Claude Code em ambiente local, com banco de teste separado.</li>
+        <li>Testo com usuários de teste por perfil e só então faço o deploy no servidor.</li>
+        <li>Verifico dependências antes de instalar qualquer pacote, contra ataques à cadeia de suprimentos.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="projects" aria-labelledby="proj-h">
+    <header>
+      <h2 id="proj-h">Outros projetos</h2>
+      <p class="eyebrow">5 itens</p>
+    </header>
+
+    <!-- 0 Borderô -->
+    <article class="proj">
+      <div class="vis">
+        <div class="bd" aria-label="Ilustração do sistema de borderô">
+          <div class="roles"><span>Lançador</span><span class="on">Financeiro</span><span>Aprovador</span><span>Admin</span></div>
+          <div class="clockrow"><span>RELÓGIO DO TESTE</span><span>seg 26/10 14:32</span></div>
+          <div class="head">
+            <div><small>BORDERÔ ABERTO</small><b>Outubro/2026</b><small>janela 28/09 12:00 → 28/10 11:59</small></div>
+            <div class="cd"><small>fecha em</small><strong>1 d 21 h</strong></div>
+          </div>
+          <div class="track" aria-hidden="true"><span></span></div>
+          <table>
+            <tr><td>Transportadora Exemplo</td><td class="n">12.480,00</td><td><span class="pl c">Conferida</span></td></tr>
+            <tr><td>Auto Peças Exemplo</td><td class="n">3.215,90</td><td><span class="pl l">Lançada</span></td></tr>
+            <tr><td>Serviços Exemplo</td><td class="n">7.476,00</td><td><span class="pl d">Devolvida</span></td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="info">
+        <span class="code-id">SIS · WEB</span>
+        <h3>Borderô de Pagamento</h3>
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>As notas a pagar chegavam ao Financeiro por e-mail, papel e planilha. Na hora de montar o borderô ninguém sabia se a lista estava completa, quais notas chegaram atrasadas e quem aprovou o quê.</dd></div>
+          <div><dt>O que fiz</dt><dd>Escrevi o documento de requisitos (PRD) com perfis, regra de corte, ciclo de vida, 21 requisitos, modelo de dados e roadmap. Depois construí um ambiente de teste funcional: lançamento de notas, fechamento automático todo dia 28 ao meio-dia, conferência, aprovação, baixa de pagamento, validação de CNPJ/CPF, bloqueio de nota duplicada e trilha de auditoria.</dd></div>
+          <div><dt>Resultado</dt><dd>Um protótipo que a equipe pode usar trocando de perfil (lançador, financeiro, aprovador) e adiantando o relógio para ver o corte acontecer, antes de investir no sistema definitivo.</dd></div>
+        </dl>
+        <div class="chips"><span>Produto / PRD</span><span>JavaScript</span><span>Regras de negócio</span><span>Modelagem de dados</span><span>Financeiro</span></div>
+      </div>
+    </article>
+
+    <!-- 1 Etiquetas -->
+    <article class="proj flip">
+      <div class="vis">
+        <div class="labels" aria-label="Ilustração das etiquetas">
+          <div class="lbl">
+            <div style="display:flex;justify-content:space-between"><span>PATRIMÔNIO</span><span>TI</span></div>
+            <svg class="minibar" viewBox="0 0 300 46" preserveAspectRatio="none" style="width:100%;height:42px;margin:6px 0"></svg>
+            <b>PAT-004817</b><br>NOTEBOOK DELL LATITUDE 5440
+          </div>
+          <div class="lbl">
+            <div class="row">
+              <svg id="qr" viewBox="0 0 25 25" width="72" height="72" shape-rendering="crispEdges"></svg>
+              <div><span>LOCALIZAÇÃO</span><br><b>LJ-ADM-03</b><br>SALA ADMINISTRATIVO<br>UNIDADE LAJEADO</div>
+            </div>
+          </div>
+<pre class="epl"><i>N</i>
+<i>q</i>400
+<i>Q</i>160,24
+<i>B</i>20,16,0,1,2,6,56,N,"&lt;codigo&gt;"
+<i>A</i>20,80,0,4,1,1,N,"&lt;codigo&gt;"
+<i>A</i>20,118,0,2,1,1,N,"&lt;descricao&gt;"
+<i>P</i>1</pre>
+        </div>
+      </div>
+      <div class="info">
+        <span class="code-id">ETQ · EPL2</span>
+        <h3>Etiquetas do sistema de inventário</h3>
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>O modelo de etiqueta usado pelo inventário imprimia só um campo e vinha de um driver antigo, difícil de manter.</dd></div>
+          <div><dt>O que fiz</dt><dd>Identifiquei a linguagem do código legado (Fingerprint gerado pelo BarTender, depois EPL2), e reescrevi os modelos em EPL2 com parâmetros: etiqueta de patrimônio com código de barras Code 128 e etiqueta de localização com QR Code.</dd></div>
+          <div><dt>Resultado</dt><dd>Um gerador com pré-visualização da etiqueta em escala real (51 × 20 mm, 203 dpi) que monta o código EPL2 pronto para copiar. As etiquetas saem do sistema com código, descrição e setor, prontas para o coletor. Texto sem acento e em maiúsculas para evitar erro na tabela de caracteres da impressora.</dd></div>
+        </dl>
+        <div class="chips"><span>Zebra</span><span>EPL2</span><span>Code 128</span><span>QR Code</span><span>Integração</span></div>
+      </div>
+    </article>
+
+    <!-- 2 Treinamentos -->
+    <article class="proj">
+      <div class="vis">
+        <div class="slides" aria-label="Ilustração dos slides de treinamento">
+          <div class="slide" style="left:0;top:0"><div class="t">Primeiro acesso</div><div class="bar"></div><div class="bar s"></div><div class="shot"></div><div class="num">02</div></div>
+          <div class="slide" style="left:11%;top:22%"><div class="t">Simulador de emplacamento</div><div class="bar s"></div><div class="shot"></div><div class="num">09</div></div>
+          <div class="slide" style="left:22%;top:44%"><div class="t">Solicitação de compra</div><div class="bar"></div><div class="shot"></div><div class="num">14</div></div>
+        </div>
+      </div>
+      <div class="info">
+        <span class="code-id">TRN · PPT</span>
+        <h3>Treinamentos dos sistemas internos</h3>
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>Vendedores novos e outras áreas aprendiam os sistemas da empresa no boca a boca, sem material de referência.</dd></div>
+          <div><dt>O que fiz</dt><dd>Montei treinamentos em PowerPoint para três sistemas: o portal de veículos (primeiro acesso, simuladores, impressão, oficina, políticas comerciais), o sistema financeiro de notas e o sistema de compras, este último separado por perfil, solicitante e comprador.</dd></div>
+          <div><dt>Resultado</dt><dd>Material passo a passo com telas reais, recortado para o que cada público usa, que serve tanto para a integração de novos colaboradores quanto para consulta.</dd></div>
+        </dl>
+        <div class="chips"><span>PowerPoint</span><span>Documentação</span><span>Treinamento de usuários</span></div>
+      </div>
+    </article>
+
+    <!-- 3 Manual -->
+    <article class="proj flip">
+      <div class="vis">
+        <div class="manual" aria-label="Ilustração da digitalização do manual">
+          <div class="scans"><div></div><div></div><div></div></div>
+          <div class="arrow">OCR<br>+ ordem<br>+ índice</div>
+          <div class="pdf">
+            <header>MANUAL_PA.pdf</header>
+            <ol>
+              <li>Tipos de causal</li>
+              <li>Prazos</li>
+              <li>Recebimento</li>
+              <li>Inventário</li>
+              <li>Inserção de OFP</li>
+            </ol>
+            <div class="more">… 22 capítulos · 34 págs.</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <span class="code-id">DOC · OCR</span>
+        <h3>Digitalização do manual de P&amp;A da Stellantis</h3>
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>O manual de reclamações de faturamento e devoluções de peças existia só em papel, escaneado em 34 arquivos soltos e fora de ordem.</dd></div>
+          <div><dt>O que fiz</dt><dd>Rasterizei as páginas, apliquei OCR para criar a camada de texto, conferi a ordem real cruzando o conteúdo com o sumário e juntei tudo em um único PDF com marcadores por capítulo.</dd></div>
+          <div><dt>Resultado</dt><dd>Um arquivo pesquisável de 34 páginas, navegável pelos 22 capítulos, com a lista das páginas que precisavam ser escaneadas de novo.</dd></div>
+        </dl>
+        <div class="chips"><span>Python</span><span>Tesseract OCR</span><span>pypdf</span><span>Poppler</span></div>
+      </div>
+    </article>
+
+    <!-- 5 M365 -->
+    <article class="proj">
+      <div class="vis">
+        <div class="m365" aria-label="Ilustração de PowerShell e planilha">
+          <div class="term">
+            <div class="bar"><span></span><span></span><span></span></div>
+<pre><i>PS&gt;</i> Connect-ExchangeOnline
+<i>PS&gt;</i> Set-OwaMailboxPolicy `
+     -Identity "OwaMailboxPolicy-Default" `
+     -ScheduledSendEnabled $true
+<i>PS&gt;</i> Get-OwaMailboxPolicy | Select ScheduledSendEnabled
+<em>True</em></pre>
+          </div>
+          <div class="sheet">
+            <table>
+              <thead><tr><th>Placa</th><th>Vencimento</th><th>Situação</th></tr></thead>
+              <tbody>
+                <tr class="p"><td>IXX-0A00</td><td>12/11/2026</td><td>Pendente</td></tr>
+                <tr class="e"><td>IXX-1B11</td><td>18/11/2026</td><td>Falta e-mail</td></tr>
+                <tr><td>IXX-2C22</td><td>03/12/2026</td><td>Lançada</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <span class="code-id">M365 · PS</span>
+        <h3>Microsoft 365, Windows e planilhas</h3>
+        <dl class="facts">
+          <div><dt>Problema</dt><dd>O RH não conseguia agendar os e-mails de aniversário a partir de uma caixa compartilhada, e planilhas de controle mostravam “Erro” e cores erradas nas linhas.</dd></div>
+          <div><dt>O que fiz</dt><dd>Revisei as permissões de “Enviar como” no Exchange e habilitei o envio agendado pela política do Outlook Web via PowerShell. Resolvi uma reinstalação travada do OneDrive limpando os registros antigos pelo PowerShell. Nas planilhas, corrigi as fórmulas da coluna de situação e de datas e reorganizei as regras de formatação condicional.</dd></div>
+          <div><dt>Resultado</dt><dd>Envio agendado funcionando para o RH e planilhas com status confiável, linhas coloridas por situação e regras mais simples de manter.</dd></div>
+        </dl>
+        <div class="chips"><span>Exchange Online</span><span>PowerShell</span><span>SharePoint</span><span>Excel</span><span>Google Sheets</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="skills" aria-labelledby="sk-h">
+    <p class="eyebrow" id="sk-h">Competências</p>
+    <div class="skill-grid">
+      <div><h3>Suporte e infraestrutura</h3><ul><li>Atendimento de chamados</li><li>Gestão de usuários e acessos</li><li>Impressoras e equipamentos</li><li>Windows e OneDrive</li></ul></div>
+      <div><h3>Microsoft 365</h3><ul><li>Exchange Online</li><li>Caixas compartilhadas e permissões</li><li>SharePoint</li><li>PowerShell</li></ul></div>
+      <div><h3>Desenvolvimento e automação</h3><ul><li>PHP, JavaScript e Python</li><li>MySQL, MariaDB e Oracle</li><li>Deploy em Linux via SSH</li><li>Claude Code (desenvolvimento com IA)</li><li>Protótipos web e PRDs</li><li>EPL2 / impressoras Zebra</li><li>Robôs de processos (RPA)</li><li>Manutenção de sistemas internos</li></ul></div>
+      <div><h3>Dados</h3><ul><li>Excel e Google Sheets</li><li>Fórmulas e formatação condicional</li><li>Planilhas de controle</li></ul></div>
+      <div><h3>Documentação</h3><ul><li>Treinamentos em PowerPoint</li><li>Digitalização e OCR</li></ul></div>
+      <div><h3>Segurança</h3><ul><li>Controle de senhas e credenciais</li><li>Verificação de dependências</li><li>Boas práticas de acesso</li></ul></div>
+    </div>
+  </section>
+
+  <section class="contact" aria-labelledby="ct-h">
+    <div>
+      <h2 id="ct-h">Vamos conversar</h2>
+      <p>Aberto a oportunidades em TI e desenvolvimento.</p>
+    </div>
+    <div style="display:grid;gap:12px"><a class="gh" href="https://github.com/JoseJungHeinen" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>github.com/JoseJungHeinen</a><div class="email"><code id="mail2">jose.heinen@universo.univates.br</code><button class="copy" data-target="mail2" type="button">Copiar e-mail</button></div></div>
+  </section>
+
+  <p class="note">As ilustrações representam os projetos. Dados e telas internas foram omitidos. O código está no GitHub com nomes e credenciais fictícios.</p>
+</div>
+
+<script>
+(function(){
+  // código de barras decorativo
+  function bars(svg, seed, w, h){
+    var x=4, s=seed, out='';
+    function r(){ s=(s*9301+49297)%233280; return s/233280; }
+    while(x < w-6){
+      var bw = 1 + Math.floor(r()*3)*1.4;
+      out += '<rect x="'+x.toFixed(1)+'" y="0" width="'+bw.toFixed(1)+'" height="'+h+'" fill="currentColor"/>';
+      x += bw + 1.2 + Math.floor(r()*3)*1.3;
+    }
+    svg.innerHTML = out;
+  }
+  bars(document.getElementById('barcode'), 4817, 300, 64);
+  document.querySelectorAll('.minibar').forEach(function(s){ s.style.color='#111'; bars(s, 1234, 300, 46); });
+
+  // QR ilustrativo
+  var q=document.getElementById('qr'), n=25, seed=77, o='<rect width="25" height="25" fill="#fff"/>';
+  function r(){ seed=(seed*9301+49297)%233280; return seed/233280; }
+  function finder(x,y){ o+='<rect x="'+x+'" y="'+y+'" width="7" height="7" fill="#111"/><rect x="'+(x+1)+'" y="'+(y+1)+'" width="5" height="5" fill="#fff"/><rect x="'+(x+2)+'" y="'+(y+2)+'" width="3" height="3" fill="#111"/>'; }
+  for(var y=0;y<n;y++)for(var x=0;x<n;x++){
+    var inF=(x<8&&y<8)||(x>16&&y<8)||(x<8&&y>16);
+    if(!inF && r()>.52) o+='<rect x="'+x+'" y="'+y+'" width="1" height="1" fill="#111"/>';
+  }
+  finder(0,0); finder(18,0); finder(0,18);
+  q.innerHTML=o;
+
+  // copiar e-mail
+  document.querySelectorAll('button.copy').forEach(function(b){
+    b.addEventListener('click', function(){
+      var el=document.getElementById(b.dataset.target), txt=el.textContent, orig=b.textContent;
+      function done(){ b.textContent='Copiado'; setTimeout(function(){ b.textContent=orig; },1600); }
+      function fallback(){ var rg=document.createRange(); rg.selectNodeContents(el); var sel=getSelection(); sel.removeAllRanges(); sel.addRange(rg); b.textContent='Selecionado'; setTimeout(function(){ b.textContent=orig; },1600); }
+      try{ navigator.clipboard.writeText(txt).then(done, fallback); }catch(e){ fallback(); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
